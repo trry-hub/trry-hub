@@ -5,7 +5,7 @@ import sidebar from "../../utils/sidebar";
 
 export default defineConfig({
     title: "trry-blog",
-    base: '/blog/',
+    base: '/docs/',
     lang: 'zh-CN',
     description: "简单记录生活",
     head: [
