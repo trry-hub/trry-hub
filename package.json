@@ -8,6 +8,7 @@
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
     "docs:commit": "bash scripts/deploy.sh",
+    "docs:preview": "vitepress preview docs",
     "register:components": "vitepress-rc"
   },
   "devDependencies": {
