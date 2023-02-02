@@ -9,14 +9,23 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: npx install pnpm
+      env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          registry-url: https://registry.npmmirror.com/
           cache: pnpm
+      - uses: pnpm/action-setup@v2.2.2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
       - run: pnpm install --frozen-lockfile
 
       - name: Build
