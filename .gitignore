@@ -5,7 +5,7 @@ node_modules
 !/src/assets/sprites/_.scss
 
 # local env files
-# docs/.vitepress/dist
+docs/.vitepress/dist
 docs/.vitepress/cache
 
 # Log files
