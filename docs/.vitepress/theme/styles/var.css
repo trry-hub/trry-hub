@@ -1,0 +1,109 @@
+/* 颜色 */
+:root {
+    --vp-c-brand: #646cff;
+    --vp-c-brand-light: #747bff;
+    --vp-c-brand-lighter: #9499ff;
+    --vp-c-brand-dark: #535bf2;
+    --vp-c-brand-darker: #454ce1;
+    --vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
+}
+
+/* 按钮 */
+:root {
+    --vp-button-brand-border: var(--vp-c-brand-light);
+    --vp-button-brand-text: var(--vp-c-text-dark-1);
+    --vp-button-brand-bg: var(--vp-c-brand);
+    --vp-button-brand-hover-border: var(--vp-c-brand-light);
+    --vp-button-brand-hover-text: var(--vp-c-text-dark-1);
+    --vp-button-brand-hover-bg: var(--vp-c-brand-light);
+    --vp-button-brand-active-border: var(--vp-c-brand-light);
+    --vp-button-brand-active-text: var(--vp-c-text-dark-1);
+    --vp-button-brand-active-bg: var(--vp-button-brand-bg);
+}
+
+/* 侧边栏 */
+:root {
+    --vp-sidebar-width: 294px;
+}
+
+/* 字体 */
+:root {
+    --vp-font-family-base: Recursive, MiSans, 'Inter var', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --vp-font-family-mono: Recursive, MiSans, ui-monospace, SFMono-Regular, 'Fira Code', 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+/* 首页 */
+:root {
+    --vp-home-hero-name-color: transparent;
+    --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #ff6700 30%, #F766B4 50%);
+    --vp-home-hero-image-background-image: linear-gradient(-45deg, #ffffff 50%, #F766B4 50%);
+    --vp-home-hero-image-filter: blur(40px);
+}
+
+@media (min-width: 640px) {
+    :root {
+        --vp-home-hero-image-filter: blur(56px);
+    }
+}
+
+@media (min-width: 960px) {
+    :root {
+        --vp-home-hero-image-filter: blur(72px);
+    }
+}
+
+.VPFeature {
+    position: relative;
+}
+
+.VPFeature .icon {
+    margin-bottom: 8px;
+}
+
+.VPFeature .title {
+    position: absolute;
+    top: 36px;
+    left: 85px;
+    font-size: 18px;
+}
+
+/* 自定义代码块 */
+:root {
+    --vp-custom-block-tip-border: var(--vp-c-brand);
+    --vp-custom-block-tip-text: var(--vp-c-brand-darker);
+    --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+}
+
+.dark {
+    --vp-custom-block-tip-border: var(--vp-c-brand);
+    --vp-custom-block-tip-text: var(--vp-c-brand-lighter);
+    --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+}
+
+.custom-block.details summary {
+    cursor: pointer;
+}
+
+.github-release-tag {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 6px;
+    margin-left: 6px;
+    background: var(--vp-c-brand);
+    color: white;
+    border-radius: 10px;
+    vertical-align: middle;
+}
+
+/* 专业版 badge */
+.pro-badge {
+    display: inline-block;
+    border-radius: 6px;
+    font-size: .65em;
+    line-height: 1;
+    font-weight: 600;
+    padding: 0.35em 0.4em 0.3em;
+    top: -0.65em;
+    color: #333;
+    background-color: #e7c605;
+}
