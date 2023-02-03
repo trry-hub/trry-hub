@@ -35,10 +35,12 @@ export default defineConfig({
             text: '在GitHub上编辑此页面'
         },
         algolia: {
-            appId: 'J305XLJ3WI',
-            apiKey: "a99eaaeb9254332a3de5af896b992bad",
+            appId: 'M2GO13PB0J',
+            apiKey: "dea55947cd635962d4413464ef0e4595",
             icon: "/public/trry-github.svg",
-            indexName: "trryblog",
+            indexName: "docs",
+            placeholder: '请输入关键词',
+            buttonText: '搜索',
             locales: {
                 zh: {
                     placeholder: '搜索文档',
