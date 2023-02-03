@@ -39,11 +39,10 @@ export default defineConfig({
             apiKey: "dea55947cd635962d4413464ef0e4595",
             icon: "/public/trry-github.svg",
             indexName: "docs",
-            placeholder: '请输入关键词',
-            buttonText: '搜索',
             locales: {
                 zh: {
                     placeholder: '搜索文档',
+                    buttonText: '搜索',
                     translations: {
                         button: {
                             buttonText: '搜索文档',
