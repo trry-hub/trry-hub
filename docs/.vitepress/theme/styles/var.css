@@ -52,19 +52,24 @@
     }
 }
 
-.VPFeature {
-    position: relative;
-}
-
 .VPFeature .icon {
     margin-bottom: 8px;
 }
 
+.VPFeature .box {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+}
+.VPFeature .details {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
 .VPFeature .title {
-    position: absolute;
-    top: 36px;
-    left: 85px;
-    font-size: 18px;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
 }
 
 /* 自定义代码块 */
