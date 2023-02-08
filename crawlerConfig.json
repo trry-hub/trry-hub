@@ -1,21 +1,23 @@
 {
     "index_name": "docs",
-    "start_urls": ["https://trry-github.github.io/docs/"],
+    "start_urls": [
+        "https://trry-github.github.io/docs/"
+    ],
     "rateLimit": 8,
     "maxDepth": 10,
     "selectors": {
-      "lvl0": {
-        "selector": "",
-        "defaultValue": "Documentation"
-      },
-      "lvl1": ".nav .link",
-      "lvl2": ".content h2",
-      "content": ".content p, .content li"
+        "lvl0": {
+            "selector": "",
+            "defaultValue": "Documentation"
+        },
+        "lvl1": ".nav .link",
+        "lvl2": ".content h2",
+        "content": ".content li"
     },
     "selectors_exclude": [
-      ".page-footer",
-      ".next-and-prev-link",
-      ".table-of-contents"
+        ".page-footer",
+        ".next-and-prev-link",
+        ".table-of-contents"
     ],
     "js_render": true
-  }
+}
