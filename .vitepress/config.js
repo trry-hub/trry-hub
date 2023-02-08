@@ -6,6 +6,7 @@ import sidebar from "../utils/sidebar";
 export default defineConfig({
     title: "trry-blog",
     lang: 'zh-CN',
+    base: "/docs/",
     description: "简单记录生活",
     head: [
         ["link", { rel: 'icon', href: './public/favicon.ico' }],
