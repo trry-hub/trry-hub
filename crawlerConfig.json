@@ -8,7 +8,7 @@
         "selector": "",
         "defaultValue": "Documentation"
       },
-      "lvl1": ".content h1",
+      "lvl1": ".nav .link",
       "lvl2": ".content h2",
       "content": ".content p, .content li"
     },

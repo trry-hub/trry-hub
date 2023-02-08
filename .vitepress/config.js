@@ -1,15 +1,14 @@
 import { defineConfig } from 'vitepress'
 
 // 自动引入zh目录下文件为sidebar
-import sidebar from "../../utils/sidebar";
+import sidebar from "../utils/sidebar";
 
 export default defineConfig({
     title: "trry-blog",
-    base: "/docs/",
     lang: 'zh-CN',
     description: "简单记录生活",
     head: [
-        ["link", { rel: 'icon', href: './favicon.ico' }],
+        ["link", { rel: 'icon', href: './public/favicon.ico' }],
         [
             "link",
             {
@@ -43,7 +42,6 @@ export default defineConfig({
         algolia: {
             appId: 'M2GO13PB0J',
             apiKey: "dea55947cd635962d4413464ef0e4595",
-            icon: "/public/trry-github.svg",
             indexName: "docs",
             placeholder: '搜索文档',
             translations: {

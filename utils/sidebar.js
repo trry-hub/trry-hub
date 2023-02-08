@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const rootDir = path.resolve();
-let docsDir = path.join(rootDir, `docs`);
+let docsDir = path.join(rootDir, ``);
 
 let sidebar = [];
 // 判断当前路径是文件还是文件夹
