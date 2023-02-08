@@ -6,7 +6,7 @@ hero:
   name: blog
   tagline: 简单记录生活
   image: 
-    src: /public/trry.png
+    src: /trry.png
   actions:
     - theme: brand
       text: 开始
