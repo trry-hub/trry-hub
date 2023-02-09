@@ -9,7 +9,7 @@ export default defineConfig({
     base: "/docs/",
     description: "简单记录生活",
     head: [
-        ["link", { rel: 'icon', href: '/public/favicon.ico' }],
+        ["link", { rel: 'icon', href: '/favicon.ico' }],
         [
             "link",
             {
