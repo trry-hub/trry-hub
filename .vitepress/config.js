@@ -41,9 +41,9 @@ export default defineConfig({
         },
         outline: 'deep',
         algolia: {
-            appId: 'M2GO13PB0J',
-            apiKey: "dea55947cd635962d4413464ef0e4595",
-            indexName: "docs",
+            appId: '9LTFBEUH19',
+            apiKey: "95b87f6f59ebff1c5e40cda2c92d323c",
+            indexName: "trry-io",
             placeholder: '搜索文档',
             translations: {
                 button: {
