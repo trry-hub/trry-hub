@@ -10,8 +10,8 @@
             "selector": "",
             "defaultValue": "Documentation"
         },
-        "lvl1": ".nav .link",
-        "lvl2": ".content h2",
+        "lvl1": ".nav a",
+        "lvl2": ".content h2,.content h3,.content h4,.content h5",
         "content": ".content li"
     },
     "selectors_exclude": [
