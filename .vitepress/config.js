@@ -42,7 +42,7 @@ export default defineConfig({
         outline: 'deep',
         algolia: {
             appId: '9LTFBEUH19',
-            apiKey: "61e845ec4253af052ad046bc90659a09",
+            apiKey: "95b87f6f59ebff1c5e40cda2c92d323c",
             indexName: "trry-io",
             placeholder: '搜索文档',
             translations: {
