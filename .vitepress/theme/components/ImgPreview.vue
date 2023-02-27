@@ -1,8 +1,3 @@
-<template>
-    <div>
-        <n-image class="img-preview" :height="height" v-bind="$attrs" :width="width" :src="withBase(baseUrl + src)" />
-    </div>
-</template>
 
 <script setup>
 import { withBase, useData } from 'vitepress'
@@ -23,6 +18,12 @@ const props = defineProps({
     height: ''
 })
 </script>
+
+<template>
+    <div>
+        <n-image class="img-preview" :height="height" v-bind="$attrs" :width="width" :src="withBase(baseUrl + src)" />
+    </div>
+</template>
 
 <style lang="scss" scoped>
 :deep(.img-preview) {
