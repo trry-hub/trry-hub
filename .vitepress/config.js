@@ -4,7 +4,7 @@ import sidebar from "../utils/sidebar";
 // import createVitePlugins from '../vite/plugins'
 
 export default defineConfig({
-    title: "trryblog",
+    title: "trry-blog",
     lang: 'zh-CN',
     base: "/docs/",
     description: "简单记录生活",
@@ -32,11 +32,11 @@ export default defineConfig({
         },
 
         socialLinks: [
-            { icon: 'github', link: 'https://github.com/trrygithub' }
+            { icon: 'github', link: 'https://github.com/trry-github' }
         ],
 
         editLink: {
-            pattern: 'https://github.com/trrygithub/-Learning/edit/docs/docs/:path',
+            pattern: 'https://github.com/trry-github/-Learning/edit/docs/docs/:path',
             text: '在GitHub上编辑此页面'
         },
         outline: 'deep',
