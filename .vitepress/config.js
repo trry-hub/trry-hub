@@ -36,7 +36,7 @@ export default defineConfig({
         ],
 
         editLink: {
-            pattern: 'https://github.com/trry-github/-Learning/edit/docs/docs/:path',
+            pattern: 'https://github.com/trry-github/trry-github/edit/main/:path',
             text: '在GitHub上编辑此页面'
         },
         outline: 'deep',
