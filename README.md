@@ -1,12 +1,12 @@
 <h3> 👨🏻关于我：</h3>
 
-<sub>莫愁前路无知己，天下谁人不识君。</sub>
+`<sub>`莫愁前路无知己，天下谁人不识君。`</sub>`
 
-#### 博客地址: 
-https://trry-github.github.io/docs
+#### 博客地址:
+
+https://trry-github.github.io/trry-github
 
 #### 友情链接:
-
 
 <p>
     <a href="https://github.com/trry-github" target="_block">
@@ -39,15 +39,17 @@ https://trry-github.github.io/docs
     <img width="22px" height="22px" src="https://cdn.svgporn.com/logos/github-icon.svg"> <span>关于Github</span>
 </h3>
 
-<sub>学无止尽行百里，业授无涯阅千文。</sub>
-<sub>进级等别需当受，步稳静心温书人</sub>
+`<sub>`学无止尽行百里，业授无涯阅千文。`</sub>`
+`<sub>`进级等别需当受，步稳静心温书人`</sub>`
 
 #### 访客数：
+
 <p>
 <img src="https://profile-counter.glitch.me/{trry-github}/count.svg" alt="trry-github :: 访客数" />
 </p>
 
 #### github 总览：
+
 <div style="display: flex;gap: 10px;">
   <div>
     <p algin="center"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=trry-github&langs_count=10&layout=compact" alt="trry-github :: Top Langs" />
