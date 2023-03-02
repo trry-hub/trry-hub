@@ -1,6 +1,6 @@
 <h3> 👨🏻关于我：</h3>
 
-`<sub>`莫愁前路无知己，天下谁人不识君。`</sub>`
+<sub>莫愁前路无知己，天下谁人不识君。</sub>
 
 #### 博客地址:
 
@@ -39,8 +39,8 @@ https://trry-github.github.io/trry-github
     <img width="22px" height="22px" src="https://cdn.svgporn.com/logos/github-icon.svg"> <span>关于Github</span>
 </h3>
 
-`<sub>`学无止尽行百里，业授无涯阅千文。`</sub>`
-`<sub>`进级等别需当受，步稳静心温书人`</sub>`
+<sub>学无止尽行百里，业授无涯阅千文。</sub>
+<sub>进级等别需当受，步稳静心温书人</sub>
 
 #### 访客数：
 
