@@ -10,7 +10,7 @@ hero:
   actions:
     - theme: brand
       text: 开始
-      link: /zh/前端笔记/vscode/常用插件
+      link: /zh/windows/常用文件
     - theme: alt
       text: View on GitHub
       link: https://github.com/trry-github
