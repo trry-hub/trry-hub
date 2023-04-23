@@ -11,8 +11,8 @@
   "devDependencies": {
     "markdown-it-katex": "^2.0.3",
     "naive-ui": "^2.34.3",
-    "sass": "^1.57.1",
-    "vitepress": "1.0.0-alpha.49",
+    "sass": "^1.62.0",
+    "vitepress": "1.0.0-alpha.73",
     "vue": "^3.2.47"
   },
   "dependencies": {

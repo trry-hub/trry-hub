@@ -256,10 +256,10 @@ function checkForm(type, value) {
 ```js
 function formatDate(time, format) {
   let t = new Date(time)
-  let tf = function(i) {
+  let tf = function (i) {
     return (i < 10 ? '0' : '') + i
   }
-  return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function(a) {
+  return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function (a) {
     switch (a) {
       case 'yyyy':
         return tf(t.getFullYear())
@@ -277,5 +277,3 @@ function formatDate(time, format) {
   })
 }
 ```
-
-## 水印
