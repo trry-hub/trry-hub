@@ -4,19 +4,21 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "docs:dev": "vitepress dev .",
+    "docs:dev": "vitepress dev . --port 3000",
     "docs:build": "vitepress build .",
     "register:components": "vitepress-rc"
+  },
+  "dependencies": {
+    "@vue/theme": "^2.2.1",
+    "gitalk": "^1.8.0",
+    "gsap": "^3.11.5",
+    "medium-zoom": "^1.0.8",
+    "vitepress": "1.0.0-alpha.74",
+    "vue": "^3.2.47"
   },
   "devDependencies": {
     "markdown-it-katex": "^2.0.3",
     "naive-ui": "^2.34.3",
-    "sass": "^1.62.0",
-    "vitepress": "1.0.0-alpha.73",
-    "vue": "^3.2.47"
-  },
-  "dependencies": {
-    "gitalk": "^1.8.0",
-    "medium-zoom": "^1.0.8"
+    "sass": "^1.62.0"
   }
 }

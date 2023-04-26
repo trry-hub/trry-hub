@@ -1,11 +1,11 @@
 // 文件排序
 function sortFileNames(files) {
-    var collator = new Intl.Collator(undefined, {
-        numeric: true,
-        sensitivity: "base",
-    });
-    files.sort(collator.compare);
-    return files;
+  var collator = new Intl.Collator(undefined, {
+    numeric: true,
+    sensitivity: 'base',
+  })
+  files.sort(collator.compare)
+  return files
 }
 
 /**
@@ -15,10 +15,9 @@ function sortFileNames(files) {
  * @returns str
  */
 function camelize(str) {
-    return (str + "").replace(/-\D/g,
-        function (match) {
-            return match.charAt(1).toUpperCase();
-        });
+  return (str + '').replace(/-\D/g, function (match) {
+    return match.charAt(1).toUpperCase()
+  })
 }
 
 /**
@@ -28,14 +27,9 @@ function camelize(str) {
  * @returns str
  */
 function hyphenate(str) {
-    return (str + "").replace(/[A-Z]/g,
-        function (match) {
-            return "-" + match.toLowerCase();
-        });
+  return (str + '').replace(/[A-Z]/g, function (match) {
+    return '-' + match.toLowerCase()
+  })
 }
 
-export {
-    sortFileNames,
-    hyphenate,
-    camelize
-};
+export { sortFileNames, hyphenate, camelize }
