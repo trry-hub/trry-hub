@@ -1,10 +1,10 @@
 import { defineConfigWithTheme } from 'vitepress'
 import baseConfig from '@vue/theme/config'
 // 自动引入zh目录下文件为sidebar
-import navbar from '../utils/navbar'
-import sidebar from '../utils/sidebar'
+import navbar from '../src/utils/navbar'
+// import sidebar from '../src/utils/sidebar'
 console.log(navbar)
-console.log(sidebar)
+// console.log(sidebar)
 // import createVitePlugins from '../vite/plugins'
 
 export default defineConfigWithTheme({
@@ -12,7 +12,7 @@ export default defineConfigWithTheme({
   title: 'trry-blog',
   lang: 'zh-CN',
   description: '简单记录生活',
-  srcDir: 'zh',
+  srcDir: 'src/zh',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     [
