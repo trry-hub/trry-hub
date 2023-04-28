@@ -3,7 +3,7 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "dev": "vitepress  --port 5174",
+    "dev": "vitepress",
     "build": "vitepress build",
     "preview": "vitepress preview",
     "preinstall": "npx only-allow pnpm"
