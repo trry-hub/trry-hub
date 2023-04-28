@@ -1,9 +1,6 @@
-@import "../fonts/font.css";
-@import "var.css";
-/* @import "pages.css";
-@import "badges.css";
-@import "options-boxes.css";
-@import "inline-demo.css";
-@import "utilities.css";
-@import "style-guide.css";
-@import "vue-mastery.css"; */
+@import "./pages.css";
+@import "./badges.css";
+@import "./options-boxes.css";
+@import "./inline-demo.css";
+@import "./utilities.css";
+@import "./style-guide.css";
