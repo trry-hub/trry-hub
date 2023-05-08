@@ -1,5 +1,4 @@
 import type { PluginOption } from 'vitepress/vite'
-import Vue from 'vitepress'
 // import vueJsx from '@vitejs/plugin-vue-jsx'
 
 // import createHtml from './html'
@@ -21,18 +20,13 @@ export default function createVitePlugins(viteEnv: any, isBuild = false) {
     'font-size:13px; background:pink; color:#bf2c9f;',
     viteEnv
   )
-  const vitePlugins: (PluginOption | PluginOption[])[] = [
-    // Vue({
-    //   reactivityTransform: true
-    // })
-    // vueJsx()
-  ]
+  const vitePlugins: (PluginOption | PluginOption[])[] = []
   // vitePlugins.push(createHtml(viteEnv, isBuild))
   // vitePlugins.push(createAutoImport())
   // vitePlugins.push(createComponents())
   // vitePlugins.push(createSetupExtend())
   // vitePlugins.push(createUnocss())
-  // vitePlugins.push(createSvgIcon(isBuild))
+  vitePlugins.push(createSvgIcon(isBuild))
   // vitePlugins.push(createI18n())
   // vitePlugins.push(createMock(viteEnv, isBuild))
   // vitePlugins.push(createLayouts())

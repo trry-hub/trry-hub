@@ -20,8 +20,10 @@
   "devDependencies": {
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^16.9.1",
+    "sass": "^1.62.1",
     "svgo": "^3.0.2",
     "terser": "^5.14.2",
+    "unplugin-svg-component": "^0.7.2",
     "vite-plugin-svg-icons": "^2.0.1"
   },
   "pnpm": {

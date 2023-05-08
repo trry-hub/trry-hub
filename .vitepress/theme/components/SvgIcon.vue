@@ -1,26 +1,27 @@
 <script lang="ts" setup name="SvgIcon">
-import {computed} from 'vue'
+import { computed, useAttrs } from 'vue'
 import { Icon } from '@iconify/vue'
 
 const props = defineProps({
   name: {
     type: String,
-    required: true,
+    required: true
   },
   runtime: {
     type: Boolean,
-    default: false,
+    default: false
   },
   flip: {
     type: String as () => 'horizontal' | 'vertical' | 'both' | '',
-    default: '',
+    default: ''
   },
   rotate: {
     type: Number,
-    default: 0,
-  },
+    default: 0
+  }
 })
 
+const attrs = useAttrs()
 const outputType = computed(() => {
   if (props.name.indexOf('i-') === 0) {
     return props.runtime ? 'svg' : 'css'
@@ -67,9 +68,24 @@ const transformStyle = computed(() => {
 </script>
 
 <template>
-  <i v-if="outputType === 'css'" :class="outputName" :style="transformStyle" />
-  <Icon v-else-if="outputType === 'svg'" :icon="outputName" :style="transformStyle" />
-  <svg v-else :style="transformStyle" aria-hidden="true">
+  <i
+    v-if="outputType === 'css'"
+    :class="outputName"
+    :style="transformStyle"
+  />
+  <Icon
+    v-else-if="outputType === 'svg'"
+    :icon="outputName"
+    :style="transformStyle"
+  />
+  <svg v-else :style="transformStyle" aria-hidden="true" class="svg-icon">
     <use :xlink:href="`#icon-${outputName}`" />
   </svg>
 </template>
+
+<style lang="scss">
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+</style>

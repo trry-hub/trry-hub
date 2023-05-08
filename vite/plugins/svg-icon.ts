@@ -4,7 +4,7 @@ console.log(createSvgIconsPlugin)
 
 export default function createSvgIcon(isBuild: boolean) {
   return createSvgIconsPlugin({
-    iconDirs: [resolve(process.cwd(), 'src/assets/icons/')],
+    iconDirs: [resolve(process.cwd(), 'public/icons/')],
     symbolId: 'icon-[dir]-[name]',
     svgoOptions: isBuild
   })

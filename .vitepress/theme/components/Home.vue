@@ -1,314 +1,300 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import SiteMap from './SiteMap.vue'
-// import NewsLetter from './NewsLetter.vue'
-import { load, data, base } from './sponsors'
-import SponsorsGroup from './SponsorsGroup.vue'
-import VueMasteryModal from './VueMasteryModal.vue'
-
-onMounted(async () => {
-  await load()
-})
+const iconList = [
+  {
+    title: 'Blog',
+    icon: 'home'
+  },
+  {
+    title: 'GitHub',
+    icon: 'github'
+  },
+  // {
+  //   title: 'QQ',
+  //   icon: 'qq'
+  // },
+  {
+    title: 'Diary',
+    icon: 'xin'
+  },
+  {
+    title: 'YouTube',
+    icon: 'youtube'
+  },
+  {
+    title: 'FaceBook',
+    icon: 'facebook'
+  }
+]
 </script>
-
 <template>
-  <section id="hero">
-    <h1 class="tagline">
-      The
-      <span class="accent">Progressive</span>
-      <br />JavaScript Framework
-    </h1>
-    <p class="description">
-      An approachable, performant and versatile framework for building web
-      user interfaces.
-    </p>
-    <p class="actions">
-      <VueMasteryModal />
-      <a class="get-started" href="/guide/introduction.html">
-        Get Started
-        <svg
-          class="icon"
-          xmlns="http://www.w3.org/2000/svg"
-          width="10"
-          height="10"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"
-          />
-        </svg>
-      </a>
-      <a class="setup" href="/guide/quick-start.html">Install</a>
-    </p>
-  </section>
-
-  <section id="special-sponsor">
-    <span class="lead">Special Sponsor</span>
-    <template v-if="data && data.special">
-      <template v-for="{ url, img, name, description } of data.special">
-        <a :href="url" target="_blank" rel="sponsored noopener">
-          <picture v-if="img.endsWith('png')">
-            <source
-              type="image/avif"
-              :srcset="`${base}/images/${img.replace(/\.png$/, '.avif')}`"
-            />
-            <img :src="`${base}/images/${img}`" :alt="name" />
-          </picture>
-          <img
-            width="168"
-            height="42"
-            v-else
-            :src="`${base}/images/${img}`"
-            :alt="name"
-          />
-        </a>
-        <span>{{ description }}</span>
-      </template>
-    </template>
-  </section>
-
-  <section id="highlights" class="vt-box-container">
-    <div class="vt-box">
-      <h2>Approachable</h2>
-      <p>
-        Builds on top of standard HTML, CSS and JavaScript with intuitive
-        API and world-class documentation.
-      </p>
+  <div class="home-preview">
+    <div class="main">
+      <div v-for="item in iconList" :key="item.title" class="item-wrap">
+        <div class="item" :class="item.icon">
+          <SvgIcon :name="item.icon"></SvgIcon>
+        </div>
+        <div class="tooltip">{{ item.title }}</div>
+      </div>
     </div>
-    <div class="vt-box">
-      <h2>Performant</h2>
-      <p>
-        Truly reactive, compiler-optimized rendering system that rarely
-        requires manual optimization.
-      </p>
-    </div>
-    <div class="vt-box">
-      <h2>Versatile</h2>
-      <p>
-        A rich, incrementally adoptable ecosystem that scales between a
-        library and a full-featured framework.
-      </p>
-    </div>
-  </section>
-
-  <section id="sponsors">
-    <h2>Platinum Sponsors</h2>
-    <SponsorsGroup tier="platinum" placement="landing" />
-    <h2>Gold Sponsors</h2>
-    <SponsorsGroup tier="gold" placement="landing" />
-  </section>
-
-  <SiteMap />
-  <!-- <NewsLetter /> -->
+    <footer class="footer">
+      <SvgIcon name="xin" class="xin" />
+      不要等待，时机永远不会恰到好处。——拿破仑·希尔
+    </footer>
+  </div>
 </template>
 
-<style scoped>
-section {
-  padding: 42px 32px;
+<style scoped lang="scss">
+$num: 10;
+.home-preview {
+  height: 100vh;
+  transform: translate3d(0, 0, 0);
+  background-color: #348cb3;
+  background-image: url('../../../public/images/base/bg.jpg');
+  background-repeat: repeat-x;
+  background-position: bottom left;
+  background-size: 1500px auto;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  animation: move calc(#{$num} * 3s) linear infinite;
+  z-index: calc(var(--vp-z-index-nav) + 1);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  justify-content: center;
+  align-items: center;
+  gap: 0 40px;
+  .item-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    .item {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      display: flex;
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+      cursor: pointer;
+      .svg-icon {
+        font-size: 30px;
+        color: #333;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+      & + .tooltip {
+        transform: scale(0);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+      &:hover {
+        transform: scale(1.2);
+        .svg-icon {
+          fill: #fff;
+          opacity: 1;
+        }
+
+        & + .tooltip {
+          opacity: 1;
+          top: -70px;
+          background-color: #fff;
+          text-shadow: 2px -2px 1px rgba(0, 0, 0, 0.4);
+          transform: scale(1);
+        }
+      }
+
+      &.home {
+        &:hover {
+          background-color: #428bca;
+        }
+        & + .tooltip {
+          background-color: #428bca;
+          &::after {
+            background-color: #428bca;
+          }
+        }
+      }
+      &.github {
+        &:hover {
+          background-color: #333;
+        }
+        & + .tooltip {
+          background-color: #333;
+          &::after {
+            background-color: #333;
+          }
+        }
+      }
+      &.qq {
+        &:hover {
+          background-color: #e32b0f;
+        }
+        & + .tooltip {
+          background-color: #e32b0f;
+          &::after {
+            background-color: #e32b0f;
+          }
+        }
+      }
+      &.xin {
+        &:hover {
+          background-color: #e1306c;
+        }
+        & + .tooltip {
+          background-color: #e1306c;
+          &::after {
+            background-color: #e1306c;
+          }
+        }
+      }
+      &.youtube {
+        &:hover {
+          background-color: #de463b;
+        }
+        & + .tooltip {
+          background-color: #de463b;
+          &::after {
+            background-color: #de463b;
+          }
+        }
+      }
+      &.facebook {
+        &:hover {
+          background-color: #3b5999;
+        }
+        & + .tooltip {
+          background-color: #3b5999;
+          &::after {
+            background-color: #3b5999;
+          }
+        }
+      }
+    }
+    .tooltip {
+      text-align: center;
+      font-size: 24px;
+      padding: 5px 15px;
+      background-color: #348cb2;
+      color: #fff;
+      border-radius: 25px;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 0;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      &:after {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%) rotateZ(45deg);
+      }
+    }
+  }
+}
+.footer {
+  height: 100px;
+  background-image: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  cursor: default;
+  width: 100%;
+  color: #fff;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  .xin {
+    width: 25px;
+    font-size: 25px;
+    margin-right: 5px;
+    fill: #fff;
+  }
+}
+@keyframes move {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: -1500px;
+  }
 }
 
-#hero {
-  padding: 96px 32px;
+.home-preview h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.tagline {
-  font-size: 76px;
-  line-height: 1.25;
-  font-weight: 900;
-  letter-spacing: -1.5px;
-  max-width: 960px;
-  margin: 0px auto;
-}
-
-html:not(.dark) .accent,
-.dark .tagline {
-  background: -webkit-linear-gradient(315deg, #42d392 25%, #647eff);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.description {
-  max-width: 960px;
-  line-height: 1.5;
-  color: var(--vt-c-text-2);
-  transition: color 0.5s;
-  font-size: 22px;
-  margin: 24px auto 40px;
-}
-
-.actions a {
-  font-size: 16px;
-  display: inline-block;
-  background-color: var(--vt-c-bg-mute);
-  padding: 8px 18px;
-  font-weight: 500;
-  border-radius: 8px;
-  transition: background-color 0.5s, color 0.5s;
-}
-
-.actions .get-started {
-  margin-right: 18px;
-}
-
-.actions .icon {
-  display: inline;
-  position: relative;
-  top: -1px;
-  margin-left: 2px;
-  fill: currentColor;
-  transition: transform 0.2s;
-}
-
-.actions .get-started:hover {
-  transition-duration: 0.2s;
-}
-
-.actions .get-started:hover .icon {
-  transform: translateX(2px);
-}
-
-.actions .get-started,
-.actions .setup {
-  color: var(--vt-c-text-code);
-}
-
-.actions .get-started:hover,
-.actions .setup:hover {
-  background-color: var(--vt-c-gray-light-4);
-  transition-duration: 0.2s;
-}
-
-.dark .actions .get-started:hover,
-.dark .actions .setup:hover {
-  background-color: var(--vt-c-gray-dark-3);
-}
-
-#special-sponsor {
-  border-top: 1px solid var(--vt-c-divider-light);
-  border-bottom: 1px solid var(--vt-c-divider-light);
-  padding: 12px 24px;
+.home-preview .items {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  margin: -8px;
 }
 
-#special-sponsor span {
-  color: var(--vt-c-text-2);
-  font-weight: 500;
-  font-size: 13px;
-  vertical-align: middle;
-  flex: 1;
+.home-preview .items .item {
+  width: 100%;
+  padding: 8px;
 }
 
-#special-sponsor span:first-child {
-  text-align: right;
+.home-preview .items .item p {
+  padding: 24px;
+  border-radius: 12px;
+  background-color: var(--vp-c-bg-soft);
 }
 
-#special-sponsor a {
-  display: flex;
-  justify-content: center;
-  padding: 0 24px;
+.home-preview .items .item p :deep(img) {
+  border: 1px solid var(--vp-c-divider);
 }
 
-#special-sponsor img {
-  height: 42px;
-  margin: -6px 0;
-}
-
-.dark #special-sponsor img {
-  filter: grayscale(1) invert(1);
-}
-
-#highlights {
-  max-width: 960px;
-  margin: 0px auto;
-  color: var(--vt-c-text-2);
-}
-
-#highlights h2 {
-  font-weight: 600;
-  font-size: 20px;
-  letter-spacing: -0.4px;
-  color: var(--vt-c-text-1);
-  transition: color 0.5s;
-  margin-bottom: 0.75em;
-}
-
-#highlights p {
-  font-weight: 400;
-  font-size: 15px;
-}
-
-#highlights .vt-box {
-  background-color: transparent;
-}
-
-#sponsors {
-  max-width: 900px;
-  margin: 0px auto;
-}
-
-#sponsors h2 {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 1em;
-}
-
-#sponsors .sponsor-container {
-  margin-bottom: 3em;
-}
-
-@media (max-width: 960px) {
-  .tagline {
-    font-size: 64px;
-    letter-spacing: -0.5px;
+@media (min-width: 640px) {
+  .home-preview-block {
+    padding: 0 48px;
   }
-  .description {
-    font-size: 18px;
-    margin-bottom: 48px;
+
+  .home-preview .items .item {
+    width: calc(100% / 2);
   }
 }
 
-@media (max-width: 768px) {
-  .tagline {
-    font-size: 48px;
-    letter-spacing: -0.5px;
+@media (min-width: 960px) {
+  .home-preview-block {
+    padding: 0 64px;
   }
-}
 
-@media (max-width: 576px) {
-  #hero {
-    padding: 56px 32px;
-  }
-  .description {
-    font-size: 16px;
-    margin: 18px 0 30px;
-  }
-  #special-sponsor {
-    flex-direction: column;
-  }
-  #special-sponsor img {
-    height: 36px;
-    margin: 8px 0;
-  }
-  #special-sponsor span {
-    text-align: center !important;
-  }
-  #highlights h3 {
-    margin-bottom: 0.6em;
-  }
-  #highlights .vt-box {
-    padding: 20px 36px;
-  }
-  .actions a {
-    margin: 18px 0;
-  }
-}
-
-@media (max-width: 370px) {
-  .tagline {
-    font-size: 36px;
+  .home-preview .items .item {
+    width: calc(100% / 3);
   }
 }
 </style>

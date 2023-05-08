@@ -12,6 +12,7 @@ import VueSchoolLink from './components/VueSchoolLink.vue'
 import Banner from './components/Banner.vue'
 import TextAd from './components/TextAd.vue'
 import SvgIcon from './components/SvgIcon.vue'
+import 'virtual:svg-icons-register'
 
 export default Object.assign({}, VPTheme, {
   Layout: () => {
