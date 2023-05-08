@@ -567,6 +567,7 @@ export default ({ mode, command }: { mode: string; command: string }) => {
     extends: baseConfig,
     lang: 'en-US',
     title: 'Vue.js',
+    base: '/trry-github/',
     description: 'Vue.js - The Progressive JavaScript Framework',
     srcDir: 'src',
     srcExclude: ['tutorial/**/description.md'],
