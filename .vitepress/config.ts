@@ -494,10 +494,6 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: '7 GUIs',
       items: [
         {
-          text: 'Counter',
-          link: '/examples/#counter'
-        },
-        {
           text: 'Temperature Converter',
           link: '/examples/#temperature-converter'
         },
@@ -622,36 +618,6 @@ export default ({ mode, command }: { mode: string; command: string }) => {
     themeConfig: {
       nav,
       sidebar,
-      // Placeholder of the i18n config for @vuejs-translations.
-      // i18n,
-
-      localeLinks: [
-        {
-          link: 'https://cn.vuejs.org',
-          text: '简体中文',
-          repo: 'https://github.com/vuejs-translations/docs-zh-cn'
-        },
-        {
-          link: 'https://ja.vuejs.org',
-          text: '日本語',
-          repo: 'https://github.com/vuejs-translations/docs-ja'
-        },
-        {
-          link: 'https://ua.vuejs.org',
-          text: 'Українська',
-          repo: 'https://github.com/vuejs-translations/docs-uk'
-        },
-        {
-          link: 'https://fr.vuejs.org',
-          text: 'Français',
-          repo: 'https://github.com/vuejs-translations/docs-fr'
-        },
-        {
-          link: '/translations/',
-          text: 'Help Us Translate!',
-          isTranslationsDesc: true
-        }
-      ],
 
       algolia: {
         indexName: 'vuejs',
@@ -660,11 +626,6 @@ export default ({ mode, command }: { mode: string; command: string }) => {
         searchParameters: {
           facetFilters: ['version:v3']
         }
-      },
-
-      carbonAds: {
-        code: 'CEBDT27Y',
-        placement: 'vuejsorg'
       },
 
       socialLinks: [

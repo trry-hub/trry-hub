@@ -2,10 +2,12 @@
 const iconList = [
   {
     title: 'Blog',
+    themeColor: '#428bca',
     icon: 'home'
   },
   {
     title: 'GitHub',
+    themeColor: '#333',
     icon: 'github'
   },
   // {
@@ -13,15 +15,23 @@ const iconList = [
   //   icon: 'qq'
   // },
   {
+    title: '掘金',
+    themeColor: '#1e80ff',
+    icon: 'tabler:brand-juejin'
+  },
+  {
     title: 'Diary',
+    themeColor: '#e1306c',
     icon: 'xin'
   },
   {
     title: 'YouTube',
-    icon: 'youtube'
+    themeColor: '#de463b',
+    icon: 'ant-design:youtube-outlined'
   },
   {
     title: 'FaceBook',
+    themeColor: '#3b5999',
     icon: 'facebook'
   }
 ]

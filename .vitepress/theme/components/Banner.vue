@@ -8,7 +8,7 @@
 import { ref } from 'vue'
 import { VTIconPlus } from '@vue/theme'
 
-const open = ref(true)
+const open = ref(false)
 
 /**
  * Call this if the banner is dismissible

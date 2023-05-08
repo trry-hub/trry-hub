@@ -1,5 +1,5 @@
 <script lang="ts" setup name="SvgIcon">
-import { computed, useAttrs } from 'vue'
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 
 const props = defineProps({
@@ -21,7 +21,6 @@ const props = defineProps({
   }
 })
 
-const attrs = useAttrs()
 const outputType = computed(() => {
   if (props.name.indexOf('i-') === 0) {
     return props.runtime ? 'svg' : 'css'
@@ -63,7 +62,7 @@ const transformStyle = computed(() => {
   if (props.rotate !== 0) {
     style.push(`rotate(${props.rotate % 360}deg)`)
   }
-  return `transform: ${style.join(' ')};`
+  return style.join(' ') ? `transform: ${style.join(' ')};` : ''
 })
 </script>
 
