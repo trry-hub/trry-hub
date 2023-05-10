@@ -1,34 +1,27 @@
-import type { PluginOption } from 'vitepress/vite'
-// import vueJsx from '@vitejs/plugin-vue-jsx'
+// 导入PluginOption 类型
+import type { PluginOption } from 'vite'
 
-// import createHtml from './html'
+// import createInspector from './inspector'
 // import createAutoImport from './auto-import'
 // import createComponents from './components'
 // import createSetupExtend from './setup-extend'
-// import createUnocss from './unocss'
+import createUnocss from './unocss'
 import createSvgIcon from './svg-icon'
-// import createI18n from './i18n'
-// import createMock from './mock'
+import createAutoImport from './auto-import'
 // import createLayouts from './layouts'
 // import createPages from './pages'
 // import createCompression from './compression'
 // import createSpritesmith from './spritesmith'
 
 export default function createVitePlugins(viteEnv: any, isBuild = false) {
-  console.log(
-    '%c [ viteEnv ]-19',
-    'font-size:13px; background:pink; color:#bf2c9f;',
-    viteEnv
-  )
-  const vitePlugins: (PluginOption | PluginOption[])[] = []
-  // vitePlugins.push(createHtml(viteEnv, isBuild))
+  const vitePlugins: PluginOption = []
+  // vitePlugins.push(createInspector())
   // vitePlugins.push(createAutoImport())
   // vitePlugins.push(createComponents())
   // vitePlugins.push(createSetupExtend())
-  // vitePlugins.push(createUnocss())
+  vitePlugins.push(createUnocss())
   vitePlugins.push(createSvgIcon(isBuild))
-  // vitePlugins.push(createI18n())
-  // vitePlugins.push(createMock(viteEnv, isBuild))
+  vitePlugins.push(...createAutoImport())
   // vitePlugins.push(createLayouts())
   // vitePlugins.push(createPages())
   // isBuild && vitePlugins.push(...createCompression(viteEnv))

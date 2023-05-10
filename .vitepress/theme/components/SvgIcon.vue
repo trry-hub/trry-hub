@@ -1,6 +1,6 @@
 <script lang="ts" setup name="SvgIcon">
 import { computed } from 'vue'
-import { Icon } from '@iconify/vue'
+import 'iconify-icon';
 
 const props = defineProps({
   name: {
@@ -67,16 +67,8 @@ const transformStyle = computed(() => {
 </script>
 
 <template>
-  <i
-    v-if="outputType === 'css'"
-    :class="outputName"
-    :style="transformStyle"
-  />
-  <Icon
-    v-else-if="outputType === 'svg'"
-    :icon="outputName"
-    :style="transformStyle"
-  />
+  <i v-if="outputType === 'css'" class="svg-icon" :class="outputName" :style="transformStyle" />
+  <iconify-icon class="svg-icon" v-else-if="outputType === 'svg'" :icon="outputName" :style="transformStyle" />
   <svg v-else :style="transformStyle" aria-hidden="true" class="svg-icon">
     <use :xlink:href="`#icon-${outputName}`" />
   </svg>

@@ -1,6 +1,5 @@
 import { resolve } from 'path'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-console.log(createSvgIconsPlugin)
 
 export default function createSvgIcon(isBuild: boolean) {
   return createSvgIconsPlugin({

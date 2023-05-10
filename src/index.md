@@ -1,6 +1,5 @@
 ---
 page: true
-title: trry-blog
 ---
 
 <script setup>

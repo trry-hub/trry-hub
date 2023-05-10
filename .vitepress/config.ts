@@ -1,5 +1,3 @@
-import fs from 'fs'
-import path from 'path'
 import { loadEnv } from 'vitepress'
 import { defineConfigWithTheme } from 'vitepress'
 import type { Config as ThemeConfig } from '@vue/theme'
@@ -549,19 +547,11 @@ export const sidebar: ThemeConfig['sidebar'] = {
   ]
 }
 
-// Placeholder of the i18n config for @vuejs-translations.
-// const i18n: ThemeConfig['i18n'] = {
-// }
-
-// console.log(process.env)
-// console.log('命令行参数为：', process.argv)
-
 export default ({ mode, command }: { mode: string; command: string }) => {
   const env = loadEnv(mode, process.cwd())
 
   return defineConfigWithTheme<ThemeConfig>({
     extends: baseConfig,
-    lang: 'en-US',
     title: 'Vue.js',
     base: '/trry-github/',
     description: 'Vue.js - The Progressive JavaScript Framework',
@@ -585,17 +575,6 @@ export default ({ mode, command }: { mode: string; command: string }) => {
           rel: 'preconnect',
           href: 'https://sponsors.vuejs.org'
         }
-      ],
-      [
-        'script',
-        {},
-        fs.readFileSync(
-          path.resolve(
-            __dirname,
-            './inlined-scripts/restorePreference.js'
-          ),
-          'utf-8'
-        )
       ],
       [
         'script',
@@ -654,6 +633,14 @@ export default ({ mode, command }: { mode: string; command: string }) => {
       }
     },
 
+    vue: {
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => ['iconify-icon'].includes(tag)
+        }
+      }
+    },
+
     vite: {
       define: {
         __VUE_OPTIONS_API__: false
@@ -667,7 +654,6 @@ export default ({ mode, command }: { mode: string; command: string }) => {
         external: ['@vue/repl']
       },
       server: {
-        host: true,
         fs: {
           // for when developing with locally linked theme
           allow: ['../..']
@@ -680,7 +666,7 @@ export default ({ mode, command }: { mode: string; command: string }) => {
       json: {
         stringify: true
       },
-      plugins: createVitePlugins(env, command === 'build'),
+      plugins: createVitePlugins(env, command === 'build')
     }
   })
 }
