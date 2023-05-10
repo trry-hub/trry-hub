@@ -124,14 +124,17 @@ function toTargetItem(row: IconRow) {
 
 <style scoped lang="scss">
 $num: 10;
+
 .list-item {
   display: inline-block;
   margin-right: 10px;
 }
+
 .list-enter-active,
 .list-leave-active {
   transition: all 0.1s;
 }
+
 .list-enter-from,
 .list-leave-to {
   opacity: 0;
@@ -153,7 +156,7 @@ $num: 10;
   left: 0;
   width: 100%;
   animation: move calc(#{$num} * 3s) linear infinite;
-  z-index: calc(var(--vp-z-index-nav) + 1);
+  z-index: calc(var(--vp-z-index-footer) + 1);
   display: flex;
   justify-content: space-between;
   flex-direction: column;

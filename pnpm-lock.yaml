@@ -10,6 +10,7 @@ specifiers:
   fast-glob: ^3.2.12
   gsap: ^3.11.5
   iconify-icon: ^1.0.7
+  markdown-it-katex: ^2.0.3
   naive-ui: ^2.34.3
   sass: ^1.62.1
   svgo: ^3.0.2
@@ -35,6 +36,7 @@ devDependencies:
   '@iconify/json': registry.npmjs.org/@iconify/json/2.2.62
   '@types/markdown-it': 12.2.3
   '@types/node': registry.npmjs.org/@types/node/20.1.0
+  markdown-it-katex: registry.npmjs.org/markdown-it-katex/2.0.3
   naive-ui: registry.npmjs.org/naive-ui/2.34.3_vue@3.2.47
   sass: registry.npmjs.org/sass/1.62.1
   svgo: registry.npmjs.org/svgo/3.0.2
@@ -3364,6 +3366,15 @@ packages:
       graceful-fs: registry.npmjs.org/graceful-fs/4.2.11
     dev: true
 
+  registry.npmjs.org/katex/0.6.0:
+    resolution: {integrity: sha512-rS4mY3SvHYg5LtQV6RBcK0if7ur6plyEukAOV+jGGPqFImuzu8fHL6M752iBmRGoUyF0bhZbAPoezehn7xYksA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/katex/-/katex-0.6.0.tgz}
+    name: katex
+    version: 0.6.0
+    hasBin: true
+    dependencies:
+      match-at: registry.npmjs.org/match-at/0.1.1
+    dev: true
+
   registry.npmjs.org/kind-of/3.2.2:
     resolution: {integrity: sha512-NOW9QQXMoZGg/oqnVNoNTTIFEIid1627WCffUBJEdMxYApq7mNE7CpzucIPc+ZQg25Phej7IJSmX3hO+oblOtQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/kind-of/-/kind-of-3.2.2.tgz}
     name: kind-of
@@ -3485,6 +3496,20 @@ packages:
     resolution: {integrity: sha512-1I+1qpDt4idfgLQG+BNWmrqku+7/2bi5nLf4YwF8y8zXvmfiTBY3PV3ZibfrjBueCByROpuBjLLFCajqkgYoLQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/mark.js/-/mark.js-8.11.1.tgz}
     name: mark.js
     version: 8.11.1
+
+  registry.npmjs.org/markdown-it-katex/2.0.3:
+    resolution: {integrity: sha512-nUkkMtRWeg7OpdflamflE/Ho/pWl64Lk9wNBKOmaj33XkQdumhXAIYhI0WO03GeiycPCsxbmX536V5NEXpC3Ng==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/markdown-it-katex/-/markdown-it-katex-2.0.3.tgz}
+    name: markdown-it-katex
+    version: 2.0.3
+    dependencies:
+      katex: registry.npmjs.org/katex/0.6.0
+    dev: true
+
+  registry.npmjs.org/match-at/0.1.1:
+    resolution: {integrity: sha512-h4Yd392z9mST+dzc+yjuybOGFNOZjmXIPKWjxBd1Bb23r4SmDOsk2NYCU2BMUBGbSpZqwVsZYNq26QS3xfaT3Q==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/match-at/-/match-at-0.1.1.tgz}
+    name: match-at
+    version: 0.1.1
+    dev: true
 
   registry.npmjs.org/mdn-data/2.0.14:
     resolution: {integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.14.tgz}

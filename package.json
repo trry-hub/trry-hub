@@ -21,6 +21,7 @@
     "@iconify/json": "^2.2.62",
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^20.1.0",
+    "markdown-it-katex": "^2.0.3",
     "naive-ui": "^2.34.3",
     "sass": "^1.62.1",
     "svgo": "^3.0.2",

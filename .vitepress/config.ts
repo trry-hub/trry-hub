@@ -2,9 +2,8 @@ import { loadEnv } from 'vitepress'
 import { defineConfigWithTheme } from 'vitepress'
 import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
-import { headerPlugin } from './headerMdPlugin'
-import { textAdPlugin } from './textAdMdPlugin'
 import createVitePlugins from '../vite/plugins'
+import navbar from './utils/navbar'
 
 const nav: ThemeConfig['nav'] = [
   {
@@ -552,11 +551,10 @@ export default ({ mode, command }: { mode: string; command: string }) => {
 
   return defineConfigWithTheme<ThemeConfig>({
     extends: baseConfig,
-    title: 'Vue.js',
+    title: 'blog',
     base: '/trry-github/',
-    description: 'Vue.js - The Progressive JavaScript Framework',
+    description: 'trry-blog',
     srcDir: 'src',
-    srcExclude: ['tutorial/**/description.md'],
 
     head: [
       ['meta', { name: 'theme-color', content: '#3c8772' }],
@@ -584,18 +582,11 @@ export default ({ mode, command }: { mode: string; command: string }) => {
           'data-spa': 'auto',
           defer: ''
         }
-      ],
-      [
-        'script',
-        {
-          src: 'https://vueschool.io/banner.js?affiliate=vuejs&type=top',
-          async: 'true'
-        }
       ]
     ],
 
     themeConfig: {
-      nav,
+      nav: navbar,
       sidebar,
 
       algolia: {
@@ -623,14 +614,21 @@ export default ({ mode, command }: { mode: string; command: string }) => {
           text: 'MIT License',
           link: 'https://opensource.org/licenses/MIT'
         },
-        copyright: `Copyright © 2014-${new Date().getFullYear()} Evan You`
+        copyright: `Copyright © 2014-${new Date().getFullYear()} trry`
       }
     },
 
     markdown: {
-      config(md) {
-        md.use(headerPlugin).use(textAdPlugin)
-      }
+      lineNumbers: false,
+      // anchor: { permalink: true },
+      // toc: { includeLevel: [1, 2] },
+      config: (md) => {
+        md.use(require('markdown-it-katex'))
+        const originalRender = md.render
+        md.render = function () {
+          return originalRender.apply(this, arguments as any).replace(/<span class="katex">/g, '<span v-pre class="katex">')
+        }
+      },
     },
 
     vue: {
