@@ -156,7 +156,7 @@ $num: 10;
   left: 0;
   width: 100%;
   animation: move calc(#{$num} * 3s) linear infinite;
-  z-index: calc(var(--vp-z-index-footer) + 1);
+  z-index: calc(var(--vp-z-index-sidebar) + 1);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -170,7 +170,7 @@ $num: 10;
 
   .icon-list {
     display: grid;
-    grid-template-columns: repeat(v-bind('iconList.length'), auto);
+    grid-template-columns: repeat(v-bind('renderIconList.length'), auto);
     justify-content: center;
     align-items: center;
     gap: 0 40px;

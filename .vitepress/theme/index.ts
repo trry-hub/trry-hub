@@ -1,7 +1,6 @@
 import './styles/index.css'
 import { h, App } from 'vue'
-// import { VPTheme } from '@vue/theme'
-import VPTheme from 'vitepress/theme'
+import { VPTheme } from '@vue/theme'
 import SvgIcon from './components/SvgIcon.vue'
 
 

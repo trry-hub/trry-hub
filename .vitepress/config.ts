@@ -561,13 +561,6 @@ export default ({ mode, command }: { mode: string; command: string }) => {
       ['meta', { name: 'twitter:site', content: '@vuejs' }],
       ['meta', { name: 'twitter:card', content: 'summary' }],
       [
-        'meta',
-        {
-          name: 'twitter:image',
-          content: 'https://vuejs.org/images/logo.png'
-        }
-      ],
-      [
         'link',
         {
           rel: 'preconnect',
@@ -599,7 +592,7 @@ export default ({ mode, command }: { mode: string; command: string }) => {
       },
 
       socialLinks: [
-        { icon: 'github', link: 'https://github.com/vuejs/' },
+        { icon: 'github', link: 'https://github.com/trry-github/' },
         { icon: 'twitter', link: 'https://twitter.com/vuejs' },
         { icon: 'discord', link: 'https://discord.com/invite/HBherRA' }
       ],

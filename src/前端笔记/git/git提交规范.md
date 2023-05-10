@@ -19,7 +19,7 @@ Git每次提交代码都需要写commit message，否则就不允许提交。一
 
 **commit message格式**
 
-```text
+```txt
 <type>(<scope>): <subject>
 ```
 
@@ -67,7 +67,7 @@ subject是commit目的的简短描述，不超过50个字符。
 - 结尾不加句号或其他标点符号。
 - 根据以上规范git commit message将是如下的格式：
 
-```text
+```txt
 fix(DAO):用户查询缺少username属性 
 feat(Controller):用户查询接口开发
 ```

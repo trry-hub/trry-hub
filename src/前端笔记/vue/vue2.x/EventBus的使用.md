@@ -31,7 +31,7 @@ vue组件非常常见的有父子组件通信，兄弟组件通信。而父子�
 **一、初始化**
 首先需要创建事件总线并将其导出，以便其它模块可以使用或者监听它。我们可以通过两种方式来处理。先来看第一种，新创建一个 .js 文件，比如 `event-bus.js`
 
-```text
+```txt
 // event-bus.js
 import Vue from 'vue'
 export const EventBus = new Vue()
@@ -41,7 +41,7 @@ export const EventBus = new Vue()
 
 另外一种方式，可以直接在项目中的 `main.js` 初始化 `EventBus` :
 
-```text
+```txt
 // main.js
 Vue.prototype.$EventBus = new Vue()
 ```
@@ -56,7 +56,7 @@ Vue.prototype.$EventBus = new Vue()
 
 假设你有两个Vue页面需要通信： A 和 B ，A页面 在按钮上面绑定了点击事件，发送一则消息，想=通知 B页面。
 
-```text
+```txt
 <!-- A.vue -->
 <template>
     <button @click="sendMsg()">-</button>
@@ -80,7 +80,7 @@ export default {
 
 ![img](https://pic2.zhimg.com/v2-460413596c47645c29e688e1efcdfccd_r.jpg)
 
-```text
+```txt
 <!-- IncrementCount.vue -->
 <template>
   <p>{{msg}}</p>
@@ -108,7 +108,7 @@ export default {
 
 同理我们也可以在 B页面 向 A页面 发送消息。这里主要用到的两个方法：
 
-```text
+```txt
 // 发送消息
 EventBus.$emit(channel: string, callback(payload1,…))
 
@@ -124,7 +124,7 @@ EventBus.$on(channel: string, callback(payload1,…))
 
 如果想移除事件的监听，可以像下面这样操作：
 
-```text
+```txt
 import { 
   eventBus 
 } from './event-bus.js'
@@ -141,7 +141,7 @@ EventBus.$off('aMsg', {})
 
 **创建全局EventBus**
 
-```text
+```txt
 var EventBus = new Vue();
 
 Object.defineProperties(Vue.prototype, {
@@ -155,7 +155,7 @@ Object.defineProperties(Vue.prototype, {
 
 在这个特定的总线中使用两个方法`$on`和`$emit`。一个用于创建发出的事件，它就是`$emit`；另一个用于订阅`$on`：
 
-```text
+```txt
 var EventBus = new Vue();
 
 this.$bus.$emit('nameOfEvent', { ... pass some event data ...});
@@ -167,7 +167,7 @@ this.$bus.$on('nameOfEvent',($event) => {
 
 然后我们可以在某个Vue页面使用`this.$bus.$emit("sendMsg", '我是web秀');`，另一个Vue页面使用
 
-```text
+```txt
 this.$bus.$on('updateMessage', function(value) {
   console.log(value); // 我是web秀
 })
