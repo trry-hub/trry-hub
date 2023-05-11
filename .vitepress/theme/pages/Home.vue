@@ -102,12 +102,14 @@ function toTargetItem(row: IconRow) {
 <template>
   <div class="home-preview">
     <div class="main">
-      <transition-group tag="div" name="list" class="icon-list">
-        <div v-for="(item, index) in renderIconList" @click="toTargetItem(item)" :key="item.title" :class="`item ${item.title === activeRow.title ? 'hover-active' : ''}`" @mouseenter="onMouseEnter(item)" @mouseleave="onMouseLeave">
-          <SvgIcon :name="item.icon" :key="index"></SvgIcon>
-          <p class="tooltip" :key="index">{{ item.title }}</p>
-        </div>
-      </transition-group>
+      <div class="icon-list">
+        <transition-group name="list">
+          <div v-for="(item, index) in renderIconList" @click="toTargetItem(item)" :key="item.title" :class="`item ${item.title === activeRow.title ? 'hover-active' : ''}`" @mouseenter="onMouseEnter(item)" @mouseleave="onMouseLeave">
+            <SvgIcon :name="item.icon" :key="index"></SvgIcon>
+            <p class="tooltip" :key="index">{{ item.title }}</p>
+          </div>
+        </transition-group>
+      </div>
     </div>
     <div class="footer">
       <SvgIcon name="xin" class="xin" />不要等待，时机永远不会恰到好处。——拿破仑·希尔
