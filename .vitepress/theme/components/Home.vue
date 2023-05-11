@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vitepress'
+import Typed from 'typed.js'
 interface IconRow {
   title: string
   themeColor: string
@@ -104,6 +105,7 @@ function toTargetItem(row: IconRow) {
     router.go('trry-github/guide/introduction')
   }
 }
+
 </script>
 <template>
   <div class="home-preview">
@@ -115,10 +117,9 @@ function toTargetItem(row: IconRow) {
         </div>
       </transition-group>
     </div>
-    <footer class="footer">
-      <SvgIcon name="xin" class="xin" />
-      不要等待，时机永远不会恰到好处。——拿破仑·希尔
-    </footer>
+    <div class="footer">
+      <SvgIcon name="xin" class="xin" />不要等待，时机永远不会恰到好处。——拿破仑·希尔
+    </div>
   </div>
 </template>
 
@@ -132,7 +133,7 @@ $num: 10;
 
 .list-enter-active,
 .list-leave-active {
-  transition: all 0.1s;
+  transition: all 3s;
 }
 
 .list-enter-from,
@@ -142,21 +143,14 @@ $num: 10;
 }
 
 .home-preview {
-  overflow: hidden;
   height: 100vh;
   background-color: #348cb3;
   background-image: url('../../../public/images/base/bg.jpg');
   background-repeat: repeat-x;
   background-position: bottom left;
   background-size: 1500px auto;
-  opacity: 1;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
   width: 100%;
   animation: move calc(#{$num} * 3s) linear infinite;
-  z-index: calc(var(--vp-z-index-sidebar) + 1);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -265,7 +259,7 @@ $num: 10;
   cursor: default;
   width: 100%;
   color: #fff;
-  font-size: 22px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;

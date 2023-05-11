@@ -8,6 +8,7 @@ import type { PluginOption } from 'vite'
 import createUnocss from './unocss'
 import createSvgIcon from './svg-icon'
 import createAutoImport from './auto-import'
+import createAutoSidebar from './auto-sidebar'
 // import createLayouts from './layouts'
 // import createPages from './pages'
 // import createCompression from './compression'
@@ -22,6 +23,7 @@ export default function createVitePlugins(viteEnv: any, isBuild = false) {
   vitePlugins.push(createUnocss())
   vitePlugins.push(createSvgIcon(isBuild))
   vitePlugins.push(...createAutoImport())
+  vitePlugins.push(createAutoSidebar())
   // vitePlugins.push(createLayouts())
   // vitePlugins.push(createPages())
   // isBuild && vitePlugins.push(...createCompression(viteEnv))
