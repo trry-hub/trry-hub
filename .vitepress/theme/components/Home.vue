@@ -164,7 +164,7 @@ $num: 10;
 
   .icon-list {
     display: grid;
-    grid-template-columns: repeat(v-bind('renderIconList.length'), auto);
+    grid-template-columns: repeat(v-bind('iconList.length'), auto);
     justify-content: center;
     align-items: center;
     gap: 0 40px;
