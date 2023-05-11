@@ -30,4 +30,5 @@ function tidySidebar(arr, currentName, parentUrl = '') {
 }
 
 tidySidebar(sidebar, 'src')
+console.log('%c [ sidebar ]-33', 'font-size:13px; background:pink; color:#bf2c9f;', sidebar)
 export default sidebar;
