@@ -1,8 +1,6 @@
-import './styles/index.css'
 import { h, App } from 'vue'
-// import { VPTheme } from '@vue/theme'
 import VPTheme from 'vitepress/theme'
-import MyLayout from './components/MyLayout.vue'
+import MyLayout from './pages/MyLayout.vue'
 import SvgIcon from './components/SvgIcon.vue'
 
 
@@ -10,8 +8,9 @@ import SvgIcon from './components/SvgIcon.vue'
 import 'virtual:svg-icons-register'
 import 'uno.css'
 
+import './styles/index.css'
+
 export default Object.assign({}, VPTheme, {
-  ...VPTheme,
   Layout: () => {
     return h(MyLayout, null, {
       // banner: () => h(Banner),

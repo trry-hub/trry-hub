@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vitepress'
 import Typed from 'typed.js'
 interface IconRow {
@@ -7,8 +7,7 @@ interface IconRow {
   themeColor: string
   icon: string
   link?: string
-  name?: string
-  animateClass?: string
+  path?: string
 }
 
 const router = useRouter()
@@ -17,58 +16,49 @@ const iconList = [
     title: 'Blog',
     themeColor: '#428bca',
     icon: 'home',
-    name: 'home',
-    animateClass: 'animate__animated'
+    path: 'leetcode/2021-10/29',
   },
   {
     title: 'GitHub',
     themeColor: '#333',
     icon: 'line-md:github',
     link: 'https://github.com/trry-github',
-    // animateClass: 'animate__animated animate__fadeInUp'
   },
   {
     title: 'QQ',
     themeColor: '#0099ff',
     icon: 'qq',
-    animateClass: 'animate__animated animate__fadeInUp'
   },
   {
     title: '掘金',
     themeColor: '#1e80ff',
     icon: 'i-tabler:brand-juejin',
     link: 'https://juejin.cn/user/2620826707309208',
-    animateClass: 'animate__animated animate__fadeInUp'
   },
   {
     title: 'csdn',
     themeColor: '#fc5531',
     icon: 'csdn-logo',
     link: 'https://blog.csdn.net/weixin_40637683?spm=1000.2115.3001.5343',
-    animateClass: 'animate__animated animate__fadeInUp'
   },
   {
     title: 'Diary',
     themeColor: '#e1306c',
     icon: 'line-md:heart',
-    animateClass: 'animate__animated animate__fadeInUp'
   },
   {
     title: 'YouTube',
     themeColor: '#de463b',
     icon: 'i-ant-design:youtube-outlined',
-    animateClass: 'animate__animated animate__fadeInUp'
   },
   {
     title: 'FaceBook',
     themeColor: '#3b5999',
     icon: 'line-md:facebook',
-    animateClass: 'animate__animated animate__fadeInUp'
   }, {
     title: 'Twitter',
     themeColor: '#1da1f2',
     icon: 'line-md:twitter',
-    animateClass: 'animate__animated animate__fadeInUp'
   }
 ]
 const activeRow = ref<IconRow>({
@@ -89,6 +79,8 @@ function onMouseLeave() {
 }
 
 let renderIconList = ref<IconRow[]>([])
+
+const renderIconListLength = computed(() => renderIconList.value.length)
 onMounted(() => {
   // 遍历iconList, 隔一段时间添加一个
   iconList.forEach((item: IconRow, index: number) => {
@@ -101,8 +93,8 @@ onMounted(() => {
 function toTargetItem(row: IconRow) {
   if (row.link) {
     window.open(row.link)
-  } else if (row?.name) {
-    router.go('trry-github/guide/introduction')
+  } else if (row?.path) {
+    router.go(row.path)
   }
 }
 
@@ -111,7 +103,7 @@ function toTargetItem(row: IconRow) {
   <div class="home-preview">
     <div class="main">
       <transition-group tag="div" name="list" class="icon-list">
-        <div v-for="(item, index) in renderIconList" @click="toTargetItem(item)" :key="item.title" :class="`item ${item.title === activeRow.title ? 'hover-active' : ''} ${item.animateClass}`" @mouseenter="onMouseEnter(item)" @mouseleave="onMouseLeave">
+        <div v-for="(item, index) in renderIconList" @click="toTargetItem(item)" :key="item.title" :class="`item ${item.title === activeRow.title ? 'hover-active' : ''}`" @mouseenter="onMouseEnter(item)" @mouseleave="onMouseLeave">
           <SvgIcon :name="item.icon" :key="index"></SvgIcon>
           <p class="tooltip" :key="index">{{ item.title }}</p>
         </div>
@@ -143,7 +135,7 @@ $num: 10;
 }
 
 .home-preview {
-  height: 100vh;
+  min-height: 100vh;
   background-color: #348cb3;
   background-image: url('../../../public/images/base/bg.jpg');
   background-repeat: repeat-x;
@@ -164,7 +156,7 @@ $num: 10;
 
   .icon-list {
     display: grid;
-    grid-template-columns: repeat(v-bind('iconList.length'), auto);
+    grid-template-columns: repeat(v-bind(renderIconListLength), auto);
     justify-content: center;
     align-items: center;
     gap: 0 40px;

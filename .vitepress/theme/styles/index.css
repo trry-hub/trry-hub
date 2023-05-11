@@ -1,2 +1,3 @@
+@import "./var.css";
 @import "../fonts/font.css";
-@import "var.css";
+@import "./mathjax3.css"

@@ -262,7 +262,7 @@ fun();
 
 十、流程图
 
-```flow
+```txt
 st=>start: 开始
 op=>operation: My Operation
 cond=>condition: Yes or No?

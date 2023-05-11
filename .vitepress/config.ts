@@ -1,18 +1,104 @@
 import { loadEnv } from 'vitepress'
-import { defineConfigWithTheme } from 'vitepress'
-// import type { Config as ThemeConfig } from '@vue/theme'
-import baseConfig from '@vue/theme/config'
+import { defineConfig } from 'vitepress'
 import createVitePlugins from '../vite/plugins'
+import markdownItMathjax3 from 'markdown-it-mathjax3'
 import navbar from './utils/navbar'
-import anchor from 'markdown-it-anchor'
 
+const customElements = [
+  'math',
+  'maction',
+  'maligngroup',
+  'malignmark',
+  'menclose',
+  'merror',
+  'mfenced',
+  'mfrac',
+  'mi',
+  'mlongdiv',
+  'mmultiscripts',
+  'mn',
+  'mo',
+  'mover',
+  'mpadded',
+  'mphantom',
+  'mroot',
+  'mrow',
+  'ms',
+  'mscarries',
+  'mscarry',
+  'mscarries',
+  'msgroup',
+  'mstack',
+  'mlongdiv',
+  'msline',
+  'mstack',
+  'mspace',
+  'msqrt',
+  'msrow',
+  'mstack',
+  'mstack',
+  'mstyle',
+  'msub',
+  'msup',
+  'msubsup',
+  'mtable',
+  'mtd',
+  'mtext',
+  'mtr',
+  'munder',
+  'munderover',
+  'semantics',
+  'math',
+  'mi',
+  'mn',
+  'mo',
+  'ms',
+  'mspace',
+  'mtext',
+  'menclose',
+  'merror',
+  'mfenced',
+  'mfrac',
+  'mpadded',
+  'mphantom',
+  'mroot',
+  'mrow',
+  'msqrt',
+  'mstyle',
+  'mmultiscripts',
+  'mover',
+  'mprescripts',
+  'msub',
+  'msubsup',
+  'msup',
+  'munder',
+  'munderover',
+  'none',
+  'maligngroup',
+  'malignmark',
+  'mtable',
+  'mtd',
+  'mtr',
+  'mlongdiv',
+  'mscarries',
+  'mscarry',
+  'msgroup',
+  'msline',
+  'msrow',
+  'mstack',
+  'maction',
+  'semantics',
+  'annotation',
+  'annotation-xml',
+  'iconify-icon'
+]
 
 export default ({ mode, command }: { mode: string; command: string }) => {
   const env = loadEnv(mode, process.cwd())
-  return defineConfigWithTheme({
-    extends: baseConfig,
+  return defineConfig({
     title: 'blog',
     base: '/trry-github/',
+    logo: '/logo.png',
     description: 'trry-blog',
     srcDir: 'src',
 
@@ -23,6 +109,20 @@ export default ({ mode, command }: { mode: string; command: string }) => {
       search: {
         provider: 'local'
       },
+      head: [
+        ['link', { rel: 'icon', href: '/logo.png' }],
+        ['meta', { name: 'author', content: 'trry' }],
+        ['meta', { name: 'keywords', content: 'trry, blog, vuepress, vitepress' }],
+        ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+        ['meta', { name: 'apple-mobile-web-app-title', content: 'trry' }],
+        ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+        ['meta', { name: 'msapplication-TileImage', content: '/logo.png' }],
+        ['meta', { name: 'msapplication-TileColor', content: '#ffffff' }],
+        ['meta', { name: 'theme-color', content: '#ffffff' }],
+        ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }],
+        ['meta', { name: 'google-site-verification', content: 'google-site-verification=9LTFBEUH19' }],
+        ['meta', { name: 'baidu-site-verification', content: 'baidu-site-verification=9LTFBEUH19' }],
+      ],
 
       socialLinks: [
         { icon: 'github', link: 'https://github.com/trry-github' },
@@ -95,18 +195,14 @@ export default ({ mode, command }: { mode: string; command: string }) => {
       // },
       // toc: { includeLevel: [1, 2] },
       config: (md) => {
-        md.use(require('markdown-it-katex'))
-        const originalRender = md.render
-        md.render = function () {
-          return originalRender.apply(this, arguments as any).replace(/<span class="katex">/g, '<span v-pre class="katex">')
-        }
+        md.use(markdownItMathjax3);
       },
     },
 
     vue: {
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => ['iconify-icon'].includes(tag)
+          isCustomElement: (tag) => customElements.includes(tag)
         }
       }
     },
