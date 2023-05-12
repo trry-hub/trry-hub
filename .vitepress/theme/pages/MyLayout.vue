@@ -1,20 +1,10 @@
 
 <script lang="ts" setup>
-import { onMounted } from 'vue'
 import { useData } from 'vitepress'
 import DefaultTheme from "vitepress/theme";
 import Comments from "../components/Comments.vue";
 const { Layout } = DefaultTheme;
 const data = useData()
-
-onMounted(() => {
-  // document.querySelector('.VPSwitch.VPSwitchAppearance')?.addEventListener('click', e => {
-  //   // isDark.value = data.isDark.value
-  //   // 改变html 类名
-  //   // document.querySelector('html')?.classList.toggle(data.isDark.value ? 'dark' : '')
-  // })
-})
-
 </script>
 
 <template>
