@@ -12,23 +12,7 @@ const imgFullPath = '/public/images/' + props.src
 </script>
 
 <template>
-  <n-button>navie-ui</n-button>
-  <n-image width="100" height="100" lazy :src="imgFullPath" :intersection-observer-options="{
-    root: '#image-scroll-container'
-  }">
-    <template #placeholder>
-      <div style="
-            width: 100px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #0001;
-          ">
-        Loading
-      </div>
-    </template>
-  </n-image>
+  <el-image style="width: 100px; height: 100px" loading="lazy" :src="imgFullPath" :preview-src-list="[imgFullPath]" :zoom-rate="1.2" :initial-index="4" fit="cover" />
 </template>
 
 <style lang="scss" scoped></style>

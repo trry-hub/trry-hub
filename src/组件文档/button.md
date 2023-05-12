@@ -7,27 +7,27 @@
 :::demo 使用`type`、`plain`、`round`和`circle`属性来定义 Button 的样式。
 ```vue
 <template>
-  <n-space>
-    <n-button>Default</n-button>
-    <n-button @click="onSubmit" type="tertiary">
+  <el-space>
+    <el-button>Default</el-button>
+    <el-button @click="onSubmit" type="tertiary">
       Tertiary
-    </n-button>
-    <n-button @click="onSubmit" type="primary">
+    </el-button>
+    <el-button @click="onSubmit" type="primary">
       Primary
-    </n-button>
-    <n-button @click="onSubmit" type="info">
+    </el-button>
+    <el-button @click="onSubmit" type="info">
       Info
-    </n-button>
-    <n-button @click="onSubmit" type="success">
+    </el-button>
+    <el-button @click="onSubmit" type="success">
       Success
-    </n-button>
-    <n-button @click="onSubmit" type="warning">
+    </el-button>
+    <el-button @click="onSubmit" type="warning">
       Warning
-    </n-button>
-    <n-button @click="onSubmit" type="error">
+    </el-button>
+    <el-button @click="onSubmit" type="error">
       Error
-    </n-button>
-  </n-space>
+    </el-button>
+  </el-space>
   <div style="margin-top: 16px">输出内容：{{ content }}</div>
 </template>
 
@@ -65,27 +65,27 @@ setup typescript 用法。
 
 ```vue
 <template>
-  <n-space>
-    <n-button>Default</n-button>
-    <n-button @click="onSubmit" type="tertiary">
+  <el-space>
+    <el-button>Default</el-button>
+    <el-button @click="onSubmit" type="tertiary">
       Tertiary
-    </n-button>
-    <n-button @click="onSubmit" type="primary">
+    </el-button>
+    <el-button @click="onSubmit" type="primary">
       Primary
-    </n-button>
-    <n-button @click="onSubmit" type="info">
+    </el-button>
+    <el-button @click="onSubmit" type="info">
       Info
-    </n-button>
-    <n-button @click="onSubmit" type="success">
+    </el-button>
+    <el-button @click="onSubmit" type="success">
       Success
-    </n-button>
-    <n-button @click="onSubmit" type="warning">
+    </el-button>
+    <el-button @click="onSubmit" type="warning">
       Warning
-    </n-button>
-    <n-button @click="onSubmit" type="error">
+    </el-button>
+    <el-button @click="onSubmit" type="error">
       Error
-    </n-button>
-  </n-space>
+    </el-button>
+  </el-space>
   <div style="margin-top: 16px">输出内容：{{ content }}</div>
 </template>
 
