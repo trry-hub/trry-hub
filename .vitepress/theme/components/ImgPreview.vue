@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { withBase } from 'vitepress';
 // import RelLoading from '.vitepress/theme/components/RelLoading.vue'
 const props = defineProps({
   src: {
@@ -8,7 +9,7 @@ const props = defineProps({
 })
 
 // 获取当前文件 的绝对路径
-const imgFullPath = '/public/images/' + props.src
+const imgFullPath = withBase('/images'+props.src)
 </script>
 
 <template>
