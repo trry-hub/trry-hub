@@ -10,6 +10,7 @@
     "svgo": "svgo -f public/icons"
   },
   "dependencies": {
+    "@vue/repl": "^1.4.1",
     "fast-glob": "^3.2.12",
     "gitalk": "^1.8.0",
     "iconify-icon": "^1.0.7",

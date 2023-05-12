@@ -1,32 +1,44 @@
 # Vue Script
 
+<script>
+import { defineAsyncComponent } from 'vue'
+import Loading from '@theme/components/Loading.vue'
+
+export default {
+  components: {
+    TutorialRepl: defineAsyncComponent({
+      loader: () => new Promise((reslove) => {
+        setTimeout(async() => {
+          const com = await import('@theme/components/ReplTemplate.vue')
+          reslove(com.default)
+        }, 2000)
+      }),
+      loadingComponent: Loading
+    })
+  }
+}
+</script>
+
+<ClientOnly>
+  <TutorialRepl />
+</ClientOnly>
+
 ## 基础用法
 
 基础的按钮用法。
 
 :::demo 使用`type`、`plain`、`round`和`circle`属性来定义 Button 的样式。
+
 ```vue
 <template>
   <el-space>
     <el-button>Default</el-button>
-    <el-button @click="onSubmit" type="tertiary">
-      Tertiary
-    </el-button>
-    <el-button @click="onSubmit" type="primary">
-      Primary
-    </el-button>
-    <el-button @click="onSubmit" type="info">
-      Info
-    </el-button>
-    <el-button @click="onSubmit" type="success">
-      Success
-    </el-button>
-    <el-button @click="onSubmit" type="warning">
-      Warning
-    </el-button>
-    <el-button @click="onSubmit" type="error">
-      Error
-    </el-button>
+    <el-button @click="onSubmit" type="tertiary"> Tertiary </el-button>
+    <el-button @click="onSubmit" type="primary"> Primary </el-button>
+    <el-button @click="onSubmit" type="info"> Info </el-button>
+    <el-button @click="onSubmit" type="success"> Success </el-button>
+    <el-button @click="onSubmit" type="warning"> Warning </el-button>
+    <el-button @click="onSubmit" type="error"> Error </el-button>
   </el-space>
   <div style="margin-top: 16px">输出内容：{{ content }}</div>
 </template>
@@ -55,6 +67,7 @@ export default defineComponent({
 }
 </style>
 ```
+
 :::
 
 ## Setup TypeScript 用法
@@ -67,24 +80,12 @@ setup typescript 用法。
 <template>
   <el-space>
     <el-button>Default</el-button>
-    <el-button @click="onSubmit" type="tertiary">
-      Tertiary
-    </el-button>
-    <el-button @click="onSubmit" type="primary">
-      Primary
-    </el-button>
-    <el-button @click="onSubmit" type="info">
-      Info
-    </el-button>
-    <el-button @click="onSubmit" type="success">
-      Success
-    </el-button>
-    <el-button @click="onSubmit" type="warning">
-      Warning
-    </el-button>
-    <el-button @click="onSubmit" type="error">
-      Error
-    </el-button>
+    <el-button @click="onSubmit" type="tertiary"> Tertiary </el-button>
+    <el-button @click="onSubmit" type="primary"> Primary </el-button>
+    <el-button @click="onSubmit" type="info"> Info </el-button>
+    <el-button @click="onSubmit" type="success"> Success </el-button>
+    <el-button @click="onSubmit" type="warning"> Warning </el-button>
+    <el-button @click="onSubmit" type="error"> Error </el-button>
   </el-space>
   <div style="margin-top: 16px">输出内容：{{ content }}</div>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { withBase } from 'vitepress';
-// import RelLoading from '.vitepress/theme/components/RelLoading.vue'
+
 const props = defineProps({
   src: {
     type: String,
@@ -16,4 +16,3 @@ const imgFullPath = withBase('/images'+props.src)
   <el-image style="width: 100px; height: 100px" loading="lazy" :src="imgFullPath" :preview-src-list="[imgFullPath]" :zoom-rate="1.2" :initial-index="4" fit="cover" />
 </template>
 
-<style lang="scss" scoped></style>
