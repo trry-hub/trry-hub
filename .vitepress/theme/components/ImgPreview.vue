@@ -10,12 +10,12 @@ const props = defineProps({
 // 获取当前文件 的绝对路径
 const __dirname = import.meta.url.match(/(.+\/)[^/]+$/)
 
-const imgFullPath = '../../../public/images/base/bg.jpg'
+const imgFullPath = '/public/images/base/bg.jpg'
 // const imgFullPath = '../../../public/images/' + props.src
 </script>
 
 <template>
-  <!-- <n-button>naive-ui</n-button> -->
+  <el-button>naive-ui</el-button>
   <!-- <img style="width: 100px;height: 100px;" :src="imgFullPath" alt=""> -->
   <!-- <n-image width="100" height="100" lazy :src="imgFullPath" :intersection-observer-options="{
     root: '#image-scroll-container'

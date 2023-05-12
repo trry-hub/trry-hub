@@ -11,12 +11,21 @@ interface IconRow {
 }
 
 const router = useRouter()
+
+// 获取根元素
+var root = document.querySelector(':root');
+// 获取根元素的样式对象
+var style = getComputedStyle(root as Element);
+// 获取 --main-color 的值
+var mainColor = style.getPropertyValue('--vp-c-brand');
+
 const iconList = [
   {
     title: 'Blog',
-    themeColor: '#428bca',
+    themeColor: mainColor,
+    // themeColor: '#428bca',
     icon: 'home',
-    path: 'leetcode/2021-10/29',
+    path: 'trry-github/src/leetcode/2021-10/29',
   },
   {
     title: 'GitHub',
@@ -88,6 +97,27 @@ onMounted(() => {
       renderIconList.value.push(item)
     }, index * 199)
   })
+
+  setTimeout(() => {
+    var typed = new Typed('.motto .typed', {
+      strings: [
+        '不要重复造轮子，要善于利用现有的资源和框架，提高开发效率和质量。',
+        '前端不仅仅是页面，而是用户体验的艺术。',
+        '不要为了做前端而做前端，而要为了解决用户的问题而做前端。',
+        '学习是一种习惯，创新是一种能力，分享是一种快乐。',
+        '前端无小事，用户至上。',
+        '保持好奇心，不断探索新技术，不要让自己落后于时代。',
+        '代码是给人看的，不是给机器看的，所以要写得清晰、规范、优雅。',
+        '前端不只是实现设计稿，而是要用技术实现交互、动画、性能等更高层次的需求。',
+        '前端开发不是一门单一的技术，而是一个涉及多方面知识的综合体系，要不断扩展自己的视野和能力。',
+        '代码如诗，注释如画，让每一个细节都充满美感。',
+      ],
+      typeSpeed: 50,
+      backSpeed: 50,
+      backDelay: 5000,
+      fadeOutDelay: 1000,
+    });
+  }, 199 * iconList.length + 1000);
 })
 
 function toTargetItem(row: IconRow) {
@@ -102,6 +132,12 @@ function toTargetItem(row: IconRow) {
 <template>
   <div class="home-preview">
     <div class="main">
+      <div class="main-info">
+        <p class="title">trry-blog</p>
+        <p class="motto">
+          <span class="typed"></span>
+        </p>
+      </div>
       <div class="icon-list">
         <transition-group name="list">
           <div v-for="(item, index) in renderIconList" @click="toTargetItem(item)" :key="item.title" :class="`item ${item.title === activeRow.title ? 'hover-active' : ''}`" @mouseenter="onMouseEnter(item)" @mouseleave="onMouseLeave">
@@ -155,6 +191,23 @@ $num: 10;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+
+  .main-info {
+    .title {
+      text-align: center;
+      font-size: 50px;
+      color: #fff;
+      padding: 50px;
+    }
+
+    .motto {
+      font-size: 20px;
+      color: #fff;
+      // text-align: center;
+      padding-bottom: 60px;
+    }
+  }
 
   .icon-list {
     display: grid;
@@ -246,14 +299,14 @@ $num: 10;
 }
 
 .footer {
-  height: 100px;
+  height: 80px;
   background-image: -webkit-linear-gradient(top,
       rgba(0, 0, 0, 0),
       rgba(0, 0, 0, 0.5) 100%);
   cursor: default;
   width: 100%;
   color: #fff;
-  font-size: 20px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;

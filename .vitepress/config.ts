@@ -5,6 +5,11 @@ import { defineConfig } from 'vitepress'
 import createVitePlugins from '../vite/plugins'
 import markdownItMathjax3 from 'markdown-it-mathjax3'
 import navbar from './utils/navbar'
+import generateSideBar from './utils/sidebar'
+
+const sidebar = generateSideBar({
+  path: 'src'
+})
 
 const customElements = [
   'math',
@@ -100,31 +105,17 @@ export default ({ mode, command }: { mode: string; command: string }) => {
   return defineConfig({
     title: 'blog',
     base: '/trry-github/',
-    logo: '/logo.png',
     description: 'trry-blog',
-    srcDir: 'src',
 
     themeConfig: {
       nav: navbar,
+      sidebar,
+      logo: '/logo.png',
       outline: 'deep',
       outlineTitle: '目录',
       search: {
         provider: 'local'
       },
-      head: [
-        ['link', { rel: 'icon', href: '/logo.png' }],
-        ['meta', { name: 'author', content: 'trry' }],
-        ['meta', { name: 'keywords', content: 'trry, blog, vuepress, vitepress' }],
-        ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-        ['meta', { name: 'apple-mobile-web-app-title', content: 'trry' }],
-        ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
-        ['meta', { name: 'msapplication-TileImage', content: '/logo.png' }],
-        ['meta', { name: 'msapplication-TileColor', content: '#ffffff' }],
-        ['meta', { name: 'theme-color', content: '#ffffff' }],
-        ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }],
-        ['meta', { name: 'google-site-verification', content: 'google-site-verification=9LTFBEUH19' }],
-        ['meta', { name: 'baidu-site-verification', content: 'baidu-site-verification=9LTFBEUH19' }],
-      ],
 
       socialLinks: [
         { icon: 'github', link: 'https://github.com/trry-github' },
@@ -182,10 +173,6 @@ export default ({ mode, command }: { mode: string; command: string }) => {
       },
 
       footer: {
-        license: {
-          text: 'MIT License',
-          link: 'https://opensource.org/licenses/MIT'
-        },
         copyright: `Copyright © 2014-${new Date().getFullYear()} trry`
       }
     },

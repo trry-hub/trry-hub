@@ -1,16 +1,20 @@
 
 <script lang="ts" setup>
+import { onMounted } from 'vue'
+import { useData } from 'vitepress'
 import DefaultTheme from "vitepress/theme";
-// import HomeHero from "./HomeHero.vue";
-// import CopyWright from "./CopyWright.vue";
 import Comments from "../components/Comments.vue";
-// import Page from "./Page.vue";
-// import Category from "./Category.vue";
-// import Title from "./Title.vue";
 const { Layout } = DefaultTheme;
-const back = () => {
-  history.back();
-};
+const data = useData()
+
+onMounted(() => {
+  // document.querySelector('.VPSwitch.VPSwitchAppearance')?.addEventListener('click', e => {
+  //   // isDark.value = data.isDark.value
+  //   // 改变html 类名
+  //   // document.querySelector('html')?.classList.toggle(data.isDark.value ? 'dark' : '')
+  // })
+})
+
 </script>
 
 <template>
@@ -59,4 +63,5 @@ button::after {
 button:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
-}</style>
+}
+</style>

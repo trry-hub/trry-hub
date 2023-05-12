@@ -1,5 +1,5 @@
 // 文件排序
-function sortFileNames(files) {
+function sortFileNames(files: string[]) {
   var collator = new Intl.Collator(undefined, {
     numeric: true,
     sensitivity: 'base',
@@ -14,7 +14,7 @@ function sortFileNames(files) {
  * @param {string} str
  * @returns str
  */
-function camelize(str) {
+function camelize(str: string) {
   return (str + '').replace(/-\D/g, function (match) {
     return match.charAt(1).toUpperCase()
   })
@@ -26,7 +26,7 @@ function camelize(str) {
  * @param {string} str
  * @returns str
  */
-function hyphenate(str) {
+function hyphenate(str: string) {
   return (str + '').replace(/[A-Z]/g, function (match) {
     return '-' + match.toLowerCase()
   })

@@ -11,6 +11,7 @@ function generateNavBarItemSync(dir: string, docsDir: string, navBar: any[]) {
   const res = fs.readdirSync(path.join(docsDir, dir))
   for (const item of res) {
     const fullPath = path.join(dir, item).replace('.md', '')
+
     if (isFileSync(path.join(docsDir, dir, item))) {
       navBar.push({
         text: item.replace('.md', ''),
@@ -54,8 +55,8 @@ function isFileSync(filePath: string) {
 }
 
 // 获取当前项目根路径
-const docsDir = path.resolve(__dirname, '../../src')
-generateNavBarItemSync('', docsDir, navBar)
+const docsDir = path.resolve(__dirname, '../../')
+generateNavBarItemSync('src', docsDir, navBar)
 
 export default navBar
 
