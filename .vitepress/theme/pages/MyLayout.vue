@@ -1,31 +1,47 @@
 
 <script lang="ts" setup>
-import { useData } from 'vitepress'
+import { ref, onMounted } from "vue";
 import DefaultTheme from "vitepress/theme";
+import { useData } from 'vitepress'
+
+import { darkTheme } from 'naive-ui'
 import Comments from "../components/Comments.vue";
+
 const { Layout } = DefaultTheme;
 const data = useData()
+
+let themeModel = ref(data.isDark.value)
+console.log('%c [ themeModel ]-14', 'font-size:13px; background:pink; color:#bf2c9f;', themeModel)
+
+
+onMounted(() => {
+  document.querySelector('.VPSwitch.VPSwitchAppearance')?.addEventListener('click', () => {
+    themeModel.value = data.isDark.value
+  })
+})
 </script>
 
 <template>
-  <Layout>
-    <!-- <template #doc-before>
+  <n-config-provider :theme="themeModel ? darkTheme : undefined">
+    <Layout>
+      <!-- <template #doc-before>
       <Title />
       <Category />
     </template> -->
-    <template #doc-after>
-      <Comments />
-    </template>
-    <!-- Home slot-->
-    <!-- <template #home-hero-before>
+      <template #doc-after>
+        <Comments />
+      </template>
+      <!-- Home slot-->
+      <!-- <template #home-hero-before>
       <HomeHero />
     </template>
     <template #home-features-after>
       <Page />
     </template> -->
-  </Layout>
-  <!-- copywright -->
-  <!-- <CopyWright /> -->
+    </Layout>
+    <!-- copywright -->
+    <!-- <CopyWright /> -->
+  </n-config-provider>
 </template>
 <style scoped>
 button {

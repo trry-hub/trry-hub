@@ -22,7 +22,6 @@
     "@iconify/json": "^2.2.63",
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^20.1.2",
-    "element-plus": "^2.3.4",
     "gray-matter": "^4.0.3",
     "markdown-it-mathjax3": "^4.3.2",
     "naive-ui": "^2.34.3",
