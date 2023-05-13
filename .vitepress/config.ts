@@ -197,6 +197,31 @@ export default ({ mode, command }: { mode: string; command: string }) => {
     },
 
     vite: {
+      define: {
+        __VUE_OPTIONS_API__: false
+      },
+      optimizeDeps: {
+        // include: ['gsap', 'dynamics.js'],
+        exclude: ['@vue/repl']
+      },
+      // @ts-ignore
+      ssr: {
+        external: ['@vue/repl']
+      },
+      // server: {
+      //   host: true,
+      //   fs: {
+      //     // for when developing with locally linked theme
+      //     allow: ['../..']
+      //   }
+      // },
+      build: {
+        minify: 'terser',
+        chunkSizeWarningLimit: Infinity
+      },
+      json: {
+        stringify: true
+      },
       plugins: createVitePlugins(env, command === 'build')
     }
   })

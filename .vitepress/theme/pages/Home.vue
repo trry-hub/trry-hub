@@ -9,21 +9,14 @@ interface IconRow {
   link?: string
   path?: string
 }
-
 const router = useRouter()
+var mainColor = ref()
 
-// 获取根元素
-var root = document.querySelector(':root');
-// 获取根元素的样式对象
-var style = getComputedStyle(root as Element);
-// 获取 --main-color 的值
-var mainColor = style.getPropertyValue('--vp-c-brand');
 
 const iconList = [
   {
     title: 'Blog',
-    themeColor: mainColor,
-    // themeColor: '#428bca',
+    themeColor: '#428bca',
     icon: 'home',
     path: 'trry-github/src/leetcode/2021-10/29',
   },
@@ -70,6 +63,15 @@ const iconList = [
     icon: 'line-md:twitter',
   }
 ]
+
+onMounted(() => {
+  // 获取根元素
+  var root = document.querySelector(':root');
+  // 获取根元素的样式对象
+  var style = getComputedStyle(root as Element);
+  // 获取 --main-color 的值
+  iconList[0].themeColor = style.getPropertyValue('--vp-c-brand');
+})
 const activeRow = ref<IconRow>({
   title: '',
   themeColor: '',
