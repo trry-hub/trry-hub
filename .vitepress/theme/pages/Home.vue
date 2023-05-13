@@ -174,6 +174,7 @@ $num: 10;
 
 .home-preview {
   min-height: 100vh;
+  height: 100%;
   background-color: #348cb3;
   background-image: url('../../../public/images/base/bg.jpg');
   background-repeat: repeat-x;
@@ -192,13 +193,15 @@ $num: 10;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
 
   .main-info {
     .title {
       text-align: center;
       font-size: 50px;
       color: #fff;
-      padding: 50px;
+      padding: 50px 0;
     }
 
     .motto {
@@ -210,11 +213,12 @@ $num: 10;
   }
 
   .icon-list {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(v-bind(renderIconListLength), auto);
+    grid-template-columns: repeat(auto-fill, 65px);
     justify-content: center;
     align-items: center;
-    gap: 0 40px;
+    gap: 20px 40px;
 
     .item {
       width: 65px;
@@ -361,25 +365,5 @@ $num: 10;
 
 .home-preview .items .item p :deep(img) {
   border: 1px solid var(--vp-c-divider);
-}
-
-@media (min-width: 640px) {
-  .home-preview-block {
-    padding: 0 48px;
-  }
-
-  .home-preview .items .item {
-    width: calc(100% / 2);
-  }
-}
-
-@media (min-width: 960px) {
-  .home-preview-block {
-    padding: 0 64px;
-  }
-
-  .home-preview .items .item {
-    width: calc(100% / 3);
-  }
 }
 </style>
