@@ -91,7 +91,6 @@ function onMouseLeave() {
 
 let renderIconList = ref<IconRow[]>([])
 
-const renderIconListLength = computed(() => renderIconList.value.length)
 onMounted(() => {
   // 遍历iconList, 隔一段时间添加一个
   iconList.forEach((item: IconRow, index: number) => {
@@ -217,7 +216,7 @@ $num: 10;
   .icon-list {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 65px);
+    grid-template-columns: repeat(auto-fit, 65px);
     justify-content: center;
     align-items: center;
     gap: 20px 40px;
