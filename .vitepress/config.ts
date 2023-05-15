@@ -103,9 +103,10 @@ const customElements = [
 export default ({ mode, command }: { mode: string; command: string }) => {
   const env = loadEnv(mode, process.cwd())
   return defineConfig({
-    title: 'blog',
+    title: 'trry',
     base: '/trry-github/',
     description: 'trry-blog',
+    lastUpdated: true,
 
     themeConfig: {
       nav: navbar,
@@ -113,8 +114,18 @@ export default ({ mode, command }: { mode: string; command: string }) => {
       logo: '/logo.png',
       outline: 'deep',
       outlineTitle: '目录',
-      search: {
-        provider: 'local'
+      lastUpdatedText: '上次更新',
+      // search: {
+      //   provider: 'algolia',
+      //   options: {
+      //     appId: '8J64VVRP8K',
+      //     apiKey: 'a18e2f4cc5665f6602c5631fd868adfd',
+      //     indexName: 'vitepress'
+      //   }
+      // },
+      docFooter: {
+        prev: '上一篇',
+        next: '下一篇'
       },
 
       socialLinks: [
