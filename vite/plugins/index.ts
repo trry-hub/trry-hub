@@ -1,6 +1,3 @@
-// 导入PluginOption 类型
-import type { PluginOption } from 'vite'
-
 // import createInspector from './inspector'
 // import createAutoImport from './auto-import'
 // import createComponents from './components'
@@ -13,8 +10,8 @@ import createAutoImport from './auto-import'
 // import createCompression from './compression'
 // import createSpritesmith from './spritesmith'
 
-export default function createVitePlugins(viteEnv: any, isBuild = false) {
-  const vitePlugins: PluginOption = []
+export default function createVitePlugins(viteEnv: any, isBuild = false)  {
+  const vitePlugins = []
   // vitePlugins.push(createInspector())
   // vitePlugins.push(createAutoImport())
   // vitePlugins.push(createComponents())

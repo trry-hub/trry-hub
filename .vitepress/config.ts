@@ -1,5 +1,4 @@
 
-/// <reference types="vite/client" />
 import { loadEnv } from 'vitepress'
 import { defineConfig } from 'vitepress'
 import createVitePlugins from '../vite/plugins'
