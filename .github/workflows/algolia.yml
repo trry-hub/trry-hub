@@ -1,19 +1,20 @@
-name: Algolia
+
+name: Algolia Upload Records
 on:
-  push:
-    branches:
-      - main
+  [push] #推送时执行
 jobs:
   algolia:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Get the content of algolia.json as config
-        id: algolia_config
-        run: echo "config=$(cat crawlerConfig.json | jq -r tostring)" >> $GITHUB_OUTPUT
-      - name: Push indices to Algolia
-        uses: signcl/docsearch-scraper-action@master
+      - name: Checkout
+        # 获取代码 Checkout
+        uses: actions/checkout@v2
+      - name: Upload Records
+        # 使用 Action
+        uses: iChochy/Algolia-Upload-Records@main
+        # 设置环境变量
         env:
-          APPLICATION_ID: ${{ secrets.APPLICATION_ID }}
-          API_KEY: ${{ secrets.API_KEY }}
-          CONFIG: ${{ steps.algolia_config.outputs.config }}
+          APPLICATION_ID: ${{secrets.APPLICATION_ID}}
+          ADMIN_API_KEY: ${{secrets.ADMIN_API_KEY}}
+          INDEX_NAME: ${{secrets.INDEX_NAME}}
+          FILE_PATH: ${{secrets.FILE_PATH}}
