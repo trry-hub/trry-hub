@@ -118,9 +118,9 @@ export default ({ mode, command }: { mode: string; command: string }) => {
       search: {
         provider: 'algolia',
         options: {
-          appId: '9LTFBEUH19',
-          apiKey: '95b87f6f59ebff1c5e40cda2c92d323c',
-          indexName: 'trry-io',
+          appId: 'EHJNVVOFQ4',
+          apiKey: '0470ac4243154040568b40cee359706a',
+          indexName: 'trry',
           placeholder: '搜索文档',
           translations: {
             button: {
