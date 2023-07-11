@@ -1,12 +1,10 @@
-
 <script lang="ts" setup>
-import DefaultTheme from "vitepress/theme";
+import DefaultTheme from 'vitepress/theme'
 import { useData } from 'vitepress'
-import Comments from "../components/Comments.vue";
+import Comments from '../components/Comments.vue'
 
-const { Layout } = DefaultTheme;
+const { Layout } = DefaultTheme
 const data = useData()
-
 </script>
 
 <template>
@@ -26,6 +24,11 @@ const data = useData()
       <Page />
     </template> -->
   </Layout>
+  <img
+    class="img"
+    src="https://n.sinaimg.cn/sinacn17/w120h120/20180314/89fc-fyscsmv5911424.gif"
+    alt=""
+  />
   <!-- copywright -->
   <!-- <CopyWright /> -->
 </template>
@@ -40,7 +43,7 @@ button {
 }
 
 button::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 100%;
   transform: scaleX(0);
@@ -55,5 +58,11 @@ button::after {
 button:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.img {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
 </style>
