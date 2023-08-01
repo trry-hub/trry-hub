@@ -202,7 +202,7 @@ export default ({ mode, command }: { mode: string; command: string }) => {
       // },
       // toc: { includeLevel: [1, 2] },
       config: (md) => {
-        md.use(markdownItMathjax3);
+        md.use(markdownItMathjax3)
       },
     },
 

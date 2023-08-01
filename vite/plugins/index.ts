@@ -9,6 +9,7 @@ import createAutoImport from './auto-import'
 // import createPages from './pages'
 // import createCompression from './compression'
 // import createSpritesmith from './spritesmith'
+// import createDemoBlock from './demo-block'
 
 export default function createVitePlugins(viteEnv: any, isBuild = false)  {
   const vitePlugins = []
@@ -23,5 +24,6 @@ export default function createVitePlugins(viteEnv: any, isBuild = false)  {
   // vitePlugins.push(createPages())
   // isBuild && vitePlugins.push(...createCompression(viteEnv))
   // vitePlugins.push(...createSpritesmith(isBuild))
+  // vitePlugins.push(createDemoBlock())
   return vitePlugins
 }
