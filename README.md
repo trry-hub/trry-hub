@@ -58,3 +58,11 @@ https://trry-github.github.io/trry-github
 </div>
 
 <!-- <iframe width="100%" height="500px" frameborder="0" scrolling="no" src="https://skyline.github.com/trrygithub/2022"></iframe> -->
+
+
+
+<!--   GitHub stats graph -->
+### 📈 GitHub Activity Graph:
+<!-- [![BEPb's github activity graph](https://github-readme-activity-graph.cyclic.app/graph?username=BEPb&theme=github-compact)](https://github.com/BEPb/github-readme-activity-graph) -->
+![BEPb's github activity graph](https://raw.githubusercontent.com/BEPb/BEPb/output/github-contribution-grid-snake.svg)
+
