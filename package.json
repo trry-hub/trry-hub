@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "engines": {
     "node": ">=14.0.0"
   },
@@ -19,7 +20,7 @@
   },
   "devDependencies": {
     "@iconify/json": "^2.2.63",
-    "element-plus": "^2.3.4",
+    "element-plus": "^2.4.0",
     "markdown-it-mathjax3": "^4.3.2",
     "sass": "^1.62.1",
     "svgo": "^3.0.2",
@@ -29,7 +30,7 @@
     "unplugin-vue-components": "^0.25.2",
     "vite": "^4.3.5",
     "vite-plugin-svg-icons": "^2.0.1",
-    "vitepress": "1.0.0-beta.5"
+    "vitepress": "1.0.0-rc.22"
   },
   "pnpm": {
     "peerDependencyRules": {

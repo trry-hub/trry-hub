@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import DefaultTheme from 'vitepress/theme'
 import { useData } from 'vitepress'
-import Comments from '../components/Comments.vue'
+// import Comments from '../components/Comments.vue'
 
 const { Layout } = DefaultTheme
 const data = useData()
