@@ -177,7 +177,7 @@ $num: 10;
   min-height: 100vh;
   height: 100%;
   background-color: #348cb3;
-  background-image: url('../../../public/images/base/bg.jpg');
+  background-image: url('/images/base/bg.jpg');
   background-repeat: repeat-x;
   background-position: bottom left;
   background-size: 1500px auto;

@@ -2,9 +2,9 @@ import { h, App, Component } from 'vue'
 import VPTheme from 'vitepress/theme'
 import MyLayout from './pages/MyLayout.vue'
 
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
-import 'element-plus/theme-chalk/dark/css-vars.css'
+// import ElementPlus from 'element-plus'
+// import 'element-plus/dist/index.css'
+// import 'element-plus/theme-chalk/dark/css-vars.css'
 
 
 // 加载 svg 图标
@@ -23,7 +23,7 @@ export default Object.assign({}, VPTheme, {
   },
   async enhanceApp({ app }: { app: App }) {
 
-    app.use(ElementPlus)
+    // app.use(ElementPlus)
 
     // 自动导入 components 下的所有组件
     const modules = import.meta.glob('./components/*.vue')
