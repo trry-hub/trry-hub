@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>西游记</title>
+  <style>
+    /* 整体的位置设置 */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .bg {
+      width: 100vw;
+      height: 100vh;
+      /* 设置背景 */
+      background-image: url(./images/bg.jpg);
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
+      animation: bgmove 20s infinite linear;
+      position: relative;
+    }
+
+    /* 对背景进行动画 ，分别给0%和100%的状态设置动作*/
+    @keyframes bgmove {
+      0% {
+        background-position: 0 0;
+      }
+
+      100% {
+        background-position: 1920px 0;
+      }
+    }
+
+    .bg>div{
+      width: 200px;
+      overflow: hidden;
+      vertical-align: text-bottom;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 160px;
+    }
+
+    /*对唐僧整个块级元素进行设置宽高和所在位置*/
+    .bg>div:nth-child(3) {
+      left: 100px;
+    }
+
+    /* 对孙悟空整个块级元素设置宽高和所在位置 */
+    .bg>div:nth-child(1) {
+      left: 100px;
+    }
+
+    /*对八戒整个块级元素进行设置宽高和所在位置*/
+    .bg>div:nth-child(2) {
+      left: 200px;
+    }
+
+    /*对沙僧整个块级元素进行设置宽高和所在位置*/
+    .bg>div:nth-child(4) {
+      left: -100px;
+    }
+
+    /*对唐僧、孙悟空、八戒和沙僧的图片进行动画属性设置，将其分成8份*/
+    .one>img,
+    .two>img,
+    .four>img,
+    .three>img{
+      width: 1600px;
+      animation: walk 1.2s infinite steps(8);
+    }
+
+    /*对孙悟空、八戒、沙僧和唐僧的图片设置开始与结束的动画*/
+    @keyframes walk {
+      from {
+        margin-left: 0;
+      }
+
+      to {
+        margin-left: -1600px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg">
+    <div class="three"><img src="./images/ts.png" alt=""></div>
+    <div class="one"><img src="./images/wk.png" alt=""></div>
+    <div class="two"><img src="./images/bj.png" alt=""></div>
+    <div class="four"><img src="./images/ss.png" alt=""></div>
+  </div>
+</body>
+
+</html>
