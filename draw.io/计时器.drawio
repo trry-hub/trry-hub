@@ -1,0 +1,135 @@
+<mxfile host="65bd71144e">
+    <diagram id="ASQbenib5n_KgUAk4f0v" name="第 1 页">
+        <mxGraphModel dx="718" dy="698" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="3" value="&lt;div data-processon-v=&quot;{&amp;quot;list&amp;quot;:[{&amp;quot;parent&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;link&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;shapeStyle&amp;quot;:{&amp;quot;alpha&amp;quot;:1},&amp;quot;textBlock&amp;quot;:[{&amp;quot;position&amp;quot;:{&amp;quot;w&amp;quot;:&amp;quot;w-20&amp;quot;,&amp;quot;x&amp;quot;:10,&amp;quot;h&amp;quot;:&amp;quot;h&amp;quot;,&amp;quot;y&amp;quot;:0},&amp;quot;text&amp;quot;:&amp;quot;播放器timeupdate 事件&amp;quot;}],&amp;quot;anchors&amp;quot;:[{&amp;quot;x&amp;quot;:&amp;quot;w/2&amp;quot;,&amp;quot;y&amp;quot;:&amp;quot;0&amp;quot;},{&amp;quot;x&amp;quot;:&amp;quot;w/2&amp;quot;,&amp;quot;y&amp;quot;:&amp;quot;h&amp;quot;},{&amp;quot;x&amp;quot;:&amp;quot;0&amp;quot;,&amp;quot;y&amp;quot;:&amp;quot;h/2&amp;quot;},{&amp;quot;x&amp;quot;:&amp;quot;w&amp;quot;,&amp;quot;y&amp;quot;:&amp;quot;h/2&amp;quot;}],&amp;quot;title&amp;quot;:&amp;quot;矩形&amp;quot;,&amp;quot;fontStyle&amp;quot;:{},&amp;quot;dataAttributes&amp;quot;:[{&amp;quot;name&amp;quot;:&amp;quot;序号&amp;quot;,&amp;quot;id&amp;quot;:&amp;quot;QMFzJbKeEz744386&amp;quot;,&amp;quot;type&amp;quot;:&amp;quot;number&amp;quot;,&amp;quot;category&amp;quot;:&amp;quot;default&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;&amp;quot;},{&amp;quot;name&amp;quot;:&amp;quot;名称&amp;quot;,&amp;quot;id&amp;quot;:&amp;quot;DPXLhTwWSb326257&amp;quot;,&amp;quot;type&amp;quot;:&amp;quot;string&amp;quot;,&amp;quot;category&amp;quot;:&amp;quot;default&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;&amp;quot;},{&amp;quot;name&amp;quot;:&amp;quot;所有者&amp;quot;,&amp;quot;id&amp;quot;:&amp;quot;jDQOzLMTYD040555&amp;quot;,&amp;quot;type&amp;quot;:&amp;quot;string&amp;quot;,&amp;quot;category&amp;quot;:&amp;quot;default&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;&amp;quot;},{&amp;quot;name&amp;quot;:&amp;quot;连接&amp;quot;,&amp;quot;id&amp;quot;:&amp;quot;XygVjEkFhp703951&amp;quot;,&amp;quot;type&amp;quot;:&amp;quot;link&amp;quot;,&amp;quot;category&amp;quot;:&amp;quot;default&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;&amp;quot;},{&amp;quot;name&amp;quot;:&amp;quot;便笺&amp;quot;,&amp;quot;id&amp;quot;:&amp;quot;MMlHxWPcqS402776&amp;quot;,&amp;quot;type&amp;quot;:&amp;quot;string&amp;quot;,&amp;quot;category&amp;quot;:&amp;quot;default&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;&amp;quot;}],&amp;quot;props&amp;quot;:{&amp;quot;zindex&amp;quot;:1,&amp;quot;w&amp;quot;:100,&amp;quot;x&amp;quot;:98.33333333333334,&amp;quot;h&amp;quot;:70,&amp;quot;y&amp;quot;:91,&amp;quot;angle&amp;quot;:0},&amp;quot;path&amp;quot;:[{&amp;quot;actions&amp;quot;:[{&amp;quot;x&amp;quot;:&amp;quot;0&amp;quot;,&amp;quot;action&amp;quot;:&amp;quot;move&amp;quot;,&amp;quot;y&amp;quot;:&amp;quot;0&amp;quot;},{&amp;quot;x&amp;quot;:&amp;quot;w&amp;quot;,&amp;quot;action&amp;quot;:&amp;quot;line&amp;quot;,&amp;quot;y&amp;quot;:&amp;quot;0&amp;quot;},{&amp;quot;x&amp;quot;:&amp;quot;w&amp;quot;,&amp;quot;action&amp;quot;:&amp;quot;line&amp;quot;,&amp;quot;y&amp;quot;:&amp;quot;h&amp;quot;},{&amp;quot;x&amp;quot;:&amp;quot;0&amp;quot;,&amp;quot;action&amp;quot;:&amp;quot;line&amp;quot;,&amp;quot;y&amp;quot;:&amp;quot;h&amp;quot;},{&amp;quot;action&amp;quot;:&amp;quot;close&amp;quot;}]}],&amp;quot;lineStyle&amp;quot;:{},&amp;quot;children&amp;quot;:[],&amp;quot;resizeDir&amp;quot;:[&amp;quot;tl&amp;quot;,&amp;quot;tr&amp;quot;,&amp;quot;br&amp;quot;,&amp;quot;bl&amp;quot;],&amp;quot;name&amp;quot;:&amp;quot;rectangle&amp;quot;,&amp;quot;fillStyle&amp;quot;:{},&amp;quot;theme&amp;quot;:{},&amp;quot;id&amp;quot;:&amp;quot;xiFlFkwIOt511260&amp;quot;,&amp;quot;attribute&amp;quot;:{&amp;quot;container&amp;quot;:false,&amp;quot;rotatable&amp;quot;:true,&amp;quot;visible&amp;quot;:true,&amp;quot;collapsable&amp;quot;:false,&amp;quot;collapsed&amp;quot;:false,&amp;quot;linkable&amp;quot;:true,&amp;quot;markerOffset&amp;quot;:5},&amp;quot;category&amp;quot;:&amp;quot;basic&amp;quot;,&amp;quot;locked&amp;quot;:false,&amp;quot;group&amp;quot;:&amp;quot;&amp;quot;}],&amp;quot;client&amp;quot;:&amp;quot;1701417300470DMKUmFutFj100477&amp;quot;}&quot; data-t=&quot;flow&quot;&gt; &lt;/div&gt;" style="text;whiteSpace=wrap;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="180" width="30" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="4" target="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="360" y="120" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="设置flag（执行一次翻转一次）" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" connectable="0" parent="5">
+                    <mxGeometry x="-0.6667" y="3" relative="1" as="geometry">
+                        <mxPoint x="60" y="3" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="播放器&lt;br&gt;timeupdate&lt;br&gt;事件" style="whiteSpace=wrap;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="90" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="edgeStyle=none;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="6" target="8">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="6" target="11">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="560" y="290" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="520" y="120"/>
+                            <mxPoint x="520" y="270"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="是" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" connectable="0" parent="10">
+                    <mxGeometry x="-0.113" relative="1" as="geometry">
+                        <mxPoint y="18" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="记录num1 和 num2" style="whiteSpace=wrap;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="90" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;rounded=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="8" target="11">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="记录num1 和 num2" style="whiteSpace=wrap;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="565" y="90" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="edgeStyle=none;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="11" target="14">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="否" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" connectable="0" parent="15">
+                    <mxGeometry x="-0.3647" y="-1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="num1 - num2 &amp;gt; 3" style="rhombus;whiteSpace=wrap;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="560" y="230" width="130" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="edgeStyle=none;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="14" target="17">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="记录时长 += num1 - num2" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="775" y="240" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;rounded=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="17" target="8">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1058" y="120"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="20" value="否" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" connectable="0" parent="19">
+                    <mxGeometry x="0.1272" y="2" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="" style="edgeStyle=none;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="17" target="21">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="是" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" connectable="0" parent="22">
+                    <mxGeometry x="-0.25" y="3" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="记录时长 % 10 = 0" style="rhombus;whiteSpace=wrap;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="995" y="230" width="125" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="" style="edgeStyle=none;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="21" target="24">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="失败" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" connectable="0" parent="25">
+                    <mxGeometry x="-0.2727" y="2" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="" style="edgeStyle=none;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="21" target="28">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="成功" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" connectable="0" parent="29">
+                    <mxGeometry x="-0.2667" y="2" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="发请求" style="rhombus;whiteSpace=wrap;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="995" y="390" width="125" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;rounded=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="24" target="17">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1263" y="270"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="存入本地，等待下次请求" style="whiteSpace=wrap;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="1202.5" y="400" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="服务器记录" style="whiteSpace=wrap;html=1;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="997.5" y="560" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;rounded=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="31" target="24">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="正常退出（返回页面）" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="1420" y="400" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="异常退出无法存储时长（直接清除微信后台，直接关闭网页）" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+                    <mxGeometry x="1420" y="560" width="120" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
