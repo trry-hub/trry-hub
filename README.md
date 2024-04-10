@@ -4,12 +4,12 @@
 
 #### 博客地址:
 
-https://trry-github.github.io/trry-github
+https://trry-hub.github.io/trry-hub
 
 #### 友情链接:
 
 <p>
-    <a href="https://github.com/trry-github" target="_block">
+    <a href="https://github.com/trry-hub" target="_block">
         <img src="https://img.shields.io/badge/-Github-%23000000?style=plastic&logo=Github"/>
     </a>
     <a href="https://gitee.com/Bliangjs" target="_block">
@@ -45,15 +45,15 @@ https://trry-github.github.io/trry-github
 #### 访客数：
 
 <p>
-<img src="https://profile-counter.glitch.me/{trry-github}/count.svg" alt="trry-github :: 访客数" />
+<img src="https://profile-counter.glitch.me/{trry-hub}/count.svg" alt="trry-hub :: 访客数" />
 </p>
 
 #### github 总览：
 
 <div style="display: flex;gap: 10px;">
   <div>
-    <p algin="center"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=trry-github&langs_count=10&layout=compact" alt="trry-github :: Top Langs" />
-    <img src="https://github-readme-stats.vercel.app/api?username=trry-github&show_icons=true" alt="trry-github :: Profile Stats" /></p>
+    <p algin="center"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=trry-hub&langs_count=10&layout=compact" alt="trry-hub :: Top Langs" />
+    <img src="https://github-readme-stats.vercel.app/api?username=trry-hub&show_icons=true" alt="trry-hub :: Profile Stats" /></p>
   </div>
 </div>
 

@@ -18,13 +18,13 @@ const iconList = [
     title: 'Blog',
     themeColor: '#428bca',
     icon: 'home',
-    path: 'trry-github/src/leetcode/2021-10/29',
+    path: 'trry-hub/src/leetcode/2021-10/29',
   },
   {
     title: 'GitHub',
     themeColor: '#333',
     icon: 'line-md:github',
-    link: 'https://github.com/trry-github',
+    link: 'https://github.com/trry-hub',
   },
   {
     title: 'QQ',

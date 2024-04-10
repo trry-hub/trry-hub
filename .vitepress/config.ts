@@ -17,7 +17,7 @@ export default ({ mode, command }: { mode: string; command: string }) => {
   const env = loadEnv(mode, process.cwd())
   return defineConfig({
     title: 'trry',
-    base: '/trry-github/',
+    base: '/trry-hub/',
     description: 'trry-blog',
     lastUpdated: true,
 
@@ -94,13 +94,13 @@ export default ({ mode, command }: { mode: string; command: string }) => {
       },
 
       socialLinks: [
-        { icon: 'github', link: 'https://github.com/trry-github' },
+        { icon: 'github', link: 'https://github.com/trry-hub' },
         { icon: 'twitter', link: 'https://twitter.com/vuejs' },
         { icon: 'discord', link: 'https://discord.com/invite/HBherRA' }
       ],
 
       editLink: {
-        pattern: 'https://github.com/trry-github/trry-github/edit/main/:path',
+        pattern: 'https://github.com/trry-hub/trry-hub/edit/main/:path',
         text: '在GitHub上编辑此页面',
       },
 
