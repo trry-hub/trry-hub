@@ -1,0 +1,1 @@
+import{d as a,h as e,j as s,o,c as l,t}from"./framework.2bd3045a.js";const r=a({__name:"ReplTemplate",setup(a){const r=e(0);return s((()=>{console.log(r.value)})),(a,e)=>(o(),l("div",null,t(r.value),1))}});export{r as default};
