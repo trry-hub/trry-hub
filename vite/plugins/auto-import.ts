@@ -1,12 +1,11 @@
 import AutoImport from 'unplugin-auto-import/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 
 export default function createAutoImport() {
   return AutoImport({
-      imports: ['vue'],
-      dts: 'typings/auto-imports.d.ts',
-      dirs: [
-        '/.vitepress/utils/composables/**',
-      ],
-    })
+    imports: ['vue'],
+    // resolvers: [ElementPlusResolver()],
+    dts: './typings/auto-imports.d.ts',
+  })
 }

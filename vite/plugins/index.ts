@@ -1,5 +1,5 @@
 import createAutoImport from './auto-import'
-// import createComponents from './components'
+import createComponents from './components'
 // import createSetupExtend from './setup-extend'
 import createUnocss from './unocss'
 import createSvgIcon from './svg-icon'
@@ -12,7 +12,7 @@ import createSvgIcon from './svg-icon'
 export default function createVitePlugins(viteEnv: any, isBuild = false)  {
   const vitePlugins = []
   vitePlugins.push(createAutoImport())
-  // vitePlugins.push(createComponents())
+  vitePlugins.push(createComponents())
   // vitePlugins.push(createSetupExtend())
   vitePlugins.push(createUnocss())
   vitePlugins.push(createSvgIcon(isBuild))

@@ -8,6 +8,8 @@ onMounted(() => {
 
 <template>
   <div>{{ count }}</div>
+  <el-button>Default</el-button>
+  12312
 </template>
 
 <style lang="scss" scoped>

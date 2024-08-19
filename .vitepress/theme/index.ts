@@ -2,9 +2,10 @@ import { h, App, Component } from 'vue'
 import VPTheme from 'vitepress/theme'
 import MyLayout from './pages/MyLayout.vue'
 
+import { ElementPlusContainer } from '@vitepress-demo-preview/component'
+import '@vitepress-demo-preview/component/dist/style.css'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import 'element-plus/theme-chalk/dark/css-vars.css'
 
 
 // 加载 svg 图标
@@ -15,15 +16,12 @@ import './styles/index.css'
 
 export default Object.assign({}, VPTheme, {
   Layout: () => {
-    return h(MyLayout, null, {
-      // banner: () => h(Banner),
-      // 'sidebar-top': () => h(PreferenceSwitch),
-      // 'aside-mid': () => h(SponsorsAside),
-    })
+    return h(MyLayout, null)
   },
   async enhanceApp({ app }: { app: App }) {
 
     app.use(ElementPlus)
+    app.component('demo-preview', ElementPlusContainer)
 
     // 自动导入 components 下的所有组件
     const modules = import.meta.glob('./components/*.vue')

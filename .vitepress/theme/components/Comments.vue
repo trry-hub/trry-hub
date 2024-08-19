@@ -4,7 +4,7 @@
 <script lang="ts" setup>
 import "gitalk/dist/gitalk.css";
 import Gitalk from "gitalk";
-import { onContentUpdated, useRouter } from "vitepress"
+import { onContentUpdated } from "vitepress"
 
 // const { route, go } = useRouter();
 function deleteChild() {

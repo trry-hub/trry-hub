@@ -4,6 +4,7 @@ import createVitePlugins from '../vite/plugins'
 import markdownItMathjax3 from 'markdown-it-mathjax3'
 import navbar from './utils/navbar'
 import generateSideBar from './utils/sidebar'
+import { componentPreview, containerPreview } from '@vitepress-demo-preview/plugin'
 
 const sidebar = generateSideBar({
   path: 'src'
@@ -117,6 +118,8 @@ export default ({ mode, command }: { mode: string; command: string }) => {
       // toc: { includeLevel: [1, 2] },
       config: (md) => {
         md.use(markdownItMathjax3)
+        md.use(containerPreview)
+        md.use(componentPreview)
       },
     },
 
