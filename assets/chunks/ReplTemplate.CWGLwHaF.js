@@ -1,0 +1,1 @@
+import{d as a,s,y as e,c as o,t as l,o as t}from"./framework.DBaJB0kt.js";const r=a({__name:"ReplTemplate",setup(a){const r=s(0);return e((()=>{console.log(r.value)})),(a,s)=>(t(),o("div",null,l(r.value),1))}});export{r as default};
