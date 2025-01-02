@@ -1,4 +1,4 @@
-<!-- <script lang="ts" setup>
+<script lang="ts" setup>
 import { Repl, ReplStore } from '@vue/repl'
 import '@vue/repl/style.css'
 import { version } from 'vue'
@@ -42,21 +42,4 @@ store.setFiles({ 'App.vue': `` })
     height: calc(var(--vh, 0px) - var(--vt-nav-height) - var(--vt-banner-height, 0px) - 48px);
   }
 }
-</style> -->
-
-<script setup lang="ts">
-import { onMounted, ref } from 'vue';
-
-const count = ref(0)
-onMounted(() => {
-  console.log(count.value)
-})
-</script>
-
-<template>
-  <div>{{ count }}</div>
-</template>
-
-<style lang="scss" scoped>
-
 </style>

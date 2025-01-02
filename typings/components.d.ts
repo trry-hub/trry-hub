@@ -7,6 +7,8 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    Default: typeof import('./../components/组件文档/button/default.vue')['default']
     Test: typeof import('./../components/test/index.vue')['default']
+    TsUse: typeof import('./../components/组件文档/button/ts-use.vue')['default']
   }
 }

@@ -3,5 +3,4 @@
 
 ### 副标题
 
-test
-<preview path="../../components/test/index.vue" title="基础使用" description="component description content"></preview>
+<demo vue="../../components/test/index.vue" title="基础使用" description="组件描述"></demo>

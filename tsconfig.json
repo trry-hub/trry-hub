@@ -10,6 +10,7 @@
     "strict": true,
     "jsx": "preserve",
     "baseUrl": "./",
+    "types": ["vite/client"],
     "paths": {
       "@theme/*": [".vitepress/theme/*"]
     }

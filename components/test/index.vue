@@ -7,9 +7,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>{{ count }}</div>
-  <el-button>Default</el-button>
-  12312
+  <div>const: {{ count }} </div>
+  <el-button @click="count++">Add</el-button>
 </template>
 
 <style lang="scss" scoped>
