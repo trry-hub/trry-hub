@@ -5,7 +5,7 @@
 ### 获取接口返回数据步骤：
 
 1. 登录 [YAPI](https://yapi.yaomaitong.net/) 平台
-2. 找到需要生成类型的接口
+2. 找到需要生成类型的接口 （ https://yapi.yaomaitong.net/api/interface/get?id= ）
 3. 点击"预览"标签页
 4. 在右侧找到"返回数据示例"
 5. 点击示例数据右上角的"复制"按钮
