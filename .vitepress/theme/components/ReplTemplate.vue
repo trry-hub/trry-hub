@@ -1,18 +1,15 @@
 <script lang="ts" setup>
-import { Repl, ReplStore } from '@vue/repl'
-import '@vue/repl/style.css'
-import { version } from 'vue'
+import { Repl } from '@vue/repl'
 
-const store = new ReplStore({
-  defaultVueRuntimeURL: `https://unpkg.com/vue@${version}/dist/vue.esm-browser.js`
-})
-
-store.setFiles({ 'App.vue': `` })
+let Monaco: any = null
+if (window && window.navigator) {
+  Monaco = await import('@vue/repl/monaco-editor')
+}
 </script>
 
 
 <template>
-  <Repl :store="store" :showImportMap="true" :showCompileOutput="false" :clearConsole="false"></Repl>
+  <Repl :editor="Monaco" :showImportMap="true" :showCompileOutput="false" :clearConsole="false"></Repl>
 </template>
 
 <style lang="scss" scoped>

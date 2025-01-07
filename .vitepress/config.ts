@@ -112,10 +112,6 @@ export default ({ mode, command }: { mode: string; command: string }) => {
 
     markdown: {
       lineNumbers: true,
-      // anchor: {
-      //   permalink: anchor.permalink.headerLink()
-      // },
-      // toc: { includeLevel: [1, 2] },
       config: (md) => {
         md.use(markdownItMathjax3)
         md.use(vitepressDemoPlugin)
@@ -135,27 +131,22 @@ export default ({ mode, command }: { mode: string; command: string }) => {
         __VUE_OPTIONS_API__: false
       },
       optimizeDeps: {
-        // include: ['gsap', 'dynamics.js'],
         exclude: ['@vue/repl']
       },
       ssr: {
-        external: ['@vue/repl']
+        noExternal: ['@vue/repl']
       },
-      // server: {
-      //   host: true,
-      //   fs: {
-      //     // for when developing with locally linked theme
-      //     allow: ['../..']
-      //   }
-      // },
       build: {
         minify: 'terser',
-        chunkSizeWarningLimit: Infinity
+        chunkSizeWarningLimit: Infinity,
+        rollupOptions: {
+          external: ['fs']
+        }
       },
       json: {
         stringify: true
       },
-      plugins: createVitePlugins(env, command === 'build')
+      plugins: createVitePlugins(env, command === 'build'),
     }
   })
 }
