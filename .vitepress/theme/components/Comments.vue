@@ -9,6 +9,6 @@ import { useRoute } from 'vitepress'
 import { Waline } from '@waline/client/component'
 import '@waline/client/style'
 
-const serverURL = 'https://waline.vercel.app';
+const serverURL = 'https://trry-blog-4baxyu3gw-trry-hubs-projects.vercel.app/';
 const path = computed(() => useRoute().path);
 </script>
