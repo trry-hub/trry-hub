@@ -138,7 +138,6 @@ export default ({ mode, command }: { mode: string; command: string }) => {
         // include: ['gsap', 'dynamics.js'],
         exclude: ['@vue/repl']
       },
-      // @ts-ignore
       ssr: {
         external: ['@vue/repl']
       },
