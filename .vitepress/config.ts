@@ -140,7 +140,7 @@ export default ({ mode, command }: { mode: string; command: string }) => {
         minify: 'terser',
         chunkSizeWarningLimit: Infinity,
         rollupOptions: {
-          external: ['fs']
+          // external: ['fs']
         }
       },
       json: {
