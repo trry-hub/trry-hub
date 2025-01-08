@@ -16,10 +16,34 @@ const apiTypesName = ref('Demo')
 
 const jsonSchemaObj = computed(() => {
   try {
-    const { req_query = [], res_body = '{}' } = jsonSchemaStr.value?.data || {}
+    const { req_query = [], req_body_other = '{}', res_body = '{}' } = jsonSchemaStr.value.data || {}
+    const hasReqQuery = Array.isArray(req_query) && req_query.length > 0
+    const hasReqBody = req_body_other && req_body_other !== '{}'
+
+    // 构建请求类型
+    let requestTypes = ''
+    if (hasReqQuery && hasReqBody) {
+      requestTypes = `request: {
+        params: {
+          ${generateApiArrayTypes(req_query, 2)}
+        },
+        body: ${generateApiJsonSchemaTypes(req_body_other, 2)}
+      }`
+    } else if (hasReqQuery) {
+      requestTypes = `request: {
+        ${generateApiArrayTypes(req_query, 1)}
+      }`
+    } else if (hasReqBody) {
+      const jsonSchema = JSON.parse(req_body_other) || {}
+      requestTypes = `request: ${generateApiJsonSchemaTypes(jsonSchema, 1)}`
+    } else {
+      requestTypes = 'request: Record<string, never>'
+    }
+
+    const jsonSchema = JSON.parse(res_body)?.properties?.data || {}
     const typeDefinition = `interface ${apiTypesName.value.trim() || 'DefaultType'} {
-      ${generateApiReqTypes(req_query)}
-      ${generateApiResTypes(res_body)}
+      ${requestTypes}
+      response: ${generateApiJsonSchemaTypes(jsonSchema, 1)}
     }`
     return formatTypeDefinition(typeDefinition)
   } catch (error) {
@@ -28,35 +52,36 @@ const jsonSchemaObj = computed(() => {
   }
 })
 
-// 生成 API 请求类型
-const generateApiReqTypes = (reqArray: any[] = []) => {
+// 修改 generateApiArrayTypes 函数，添加缩进级别参数
+const generateApiArrayTypes = (reqArray: any[] = [], indentLevel: number = 1) => {
   try {
-    let result = `request: {\n`
+    let result = ''
+    const indent = '  '.repeat(indentLevel)
 
     reqArray.forEach((param: any) => {
-      if (!param?.name) return // 跳过无效参数
+      if (!param?.name) return
 
       const required = param.required === "1"
       const name = param.name.trim()
-      const type = getParameterType(param.type) // 新增类型判断函数
-      const desc = param.desc ? `  // ${param.desc.trim()}\n` : ""
+      const type = getParameterType(param.type)
+      const desc = param.desc ? `${indent}// ${param.desc.trim()}\n` : ""
 
-      result += `${desc}  ${name}${required ? "" : "?"}: ${type};\n`
+      result += `${desc}${indent}${name}${required ? "" : "?"}: ${type};\n`
     })
 
-    result += "}"
-    return result
+    return result.trim()
   } catch (error) {
     console.error('生成请求类型时出错:', error)
-    return 'request { /* 类型生成失败 */ }'
+    return '/* 类型生成失败 */'
   }
 }
 
-// 生成 API 响应类型
-const generateApiResTypes = (jsonSchemaStr: string) => {
+// 修改 generateApiJsonSchemaTypes 函数，添加缩进级别参数
+const generateApiJsonSchemaTypes = (jsonSchema: any, indentLevel: number = 1) => {
   try {
-    const jsonSchema = JSON.parse(jsonSchemaStr)?.properties?.data || {}
-    let result = `response: {\n`
+    console.log('jsonSchema: ', jsonSchema)
+    const indent = '  '.repeat(indentLevel)
+    let result = '{\n'
 
     // 获取属性的类型
     const getPropertyType = (prop: any): string => {
@@ -80,10 +105,10 @@ const generateApiResTypes = (jsonSchemaStr: string) => {
             let nestedInterface = '{\n'
             for (const [key, value] of Object.entries(prop.properties)) {
               const typedValue = value as JsonSchemaProperty
-              const desc = typedValue.description ? `  // ${typedValue.description}\n` : ''
-              nestedInterface += `${desc}    ${key}${typedValue.required ? '' : '?'}: ${getPropertyType(typedValue)}\n`
+              const desc = typedValue.description ? `${indent}  // ${typedValue.description}\n` : ''
+              nestedInterface += `${desc}${indent}    ${key}${typedValue.required ? '' : '?'}: ${getPropertyType(typedValue)}\n`
             }
-            nestedInterface += '  }'
+            nestedInterface += `${indent}  }`
             return nestedInterface
           }
           return 'Record<string, any>'
@@ -98,8 +123,8 @@ const generateApiResTypes = (jsonSchemaStr: string) => {
         if (!key || !value) continue // 跳过无效属性
 
         const required = Array.isArray(jsonSchema.required) && jsonSchema.required.includes(key)
-        const desc = (value as any).description ? `  // ${(value as any).description.trim()}\n` : ''
-        result += `${desc}  ${key}${required ? '' : '?'}: ${getPropertyType(value as any)}\n`
+        const desc = (value as any).description ? `${indent}  // ${(value as any).description.trim()}\n` : ''
+        result += `${desc}${indent}  ${key}${required ? '' : '?'}: ${getPropertyType(value as any)}\n`
       }
     }
 
@@ -107,7 +132,7 @@ const generateApiResTypes = (jsonSchemaStr: string) => {
     return result
   } catch (error) {
     console.error('生成响应类型时出错:', error)
-    return 'response { /* 类型生成失败 */ }'
+    return '{ /* 类型生成失败 */ }'
   }
 }
 
