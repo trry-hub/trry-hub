@@ -79,12 +79,16 @@ const generateApiArrayTypes = (reqArray: any[] = [], indentLevel: number = 1) =>
 // 修改 generateApiJsonSchemaTypes 函数，添加缩进级别参数
 const generateApiJsonSchemaTypes = (jsonSchema: any, indentLevel: number = 1) => {
   try {
-    console.log('jsonSchema: ', jsonSchema)
+    // 如果 jsonSchema 直接是类型定义
+    if (jsonSchema.type && !jsonSchema.properties) {
+      return getPropertyType(jsonSchema)
+    }
+
     const indent = '  '.repeat(indentLevel)
     let result = '{\n'
 
     // 获取属性的类型
-    const getPropertyType = (prop: any): string => {
+    function getPropertyType (prop: any): string {
       if (!prop.type) return 'any'
 
       switch (prop.type) {
