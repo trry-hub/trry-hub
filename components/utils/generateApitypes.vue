@@ -1,18 +1,19 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
 import resJson from './api-res.json'
 
 interface JsonSchemaProperty {
-  type?: string;
-  description?: string;
-  required?: boolean;
-  items?: JsonSchemaProperty;
-  properties?: Record<string, JsonSchemaProperty>;
+  type?: string
+  description?: string
+  required?: boolean
+  items?: JsonSchemaProperty
+  properties?: Record<string, JsonSchemaProperty>
 }
 
 const jsonSchemaStr = ref(resJson)
 const apiTypesName = ref('Demo')
-
+const yApiForm = ref({
+  useDocsDefine: false,
+})
 
 const jsonSchemaObj = computed(() => {
   try {
@@ -29,14 +30,17 @@ const jsonSchemaObj = computed(() => {
         },
         body: ${generateApiJsonSchemaTypes(req_body_other, 2)}
       }`
-    } else if (hasReqQuery) {
+    }
+    else if (hasReqQuery) {
       requestTypes = `request: {
         ${generateApiArrayTypes(req_query, 1)}
       }`
-    } else if (hasReqBody) {
+    }
+    else if (hasReqBody) {
       const jsonSchema = JSON.parse(req_body_other) || {}
       requestTypes = `request: ${generateApiJsonSchemaTypes(jsonSchema, 1)}`
-    } else {
+    }
+    else {
       requestTypes = 'request: Record<string, never>'
     }
 
@@ -46,38 +50,42 @@ const jsonSchemaObj = computed(() => {
       response: ${generateApiJsonSchemaTypes(jsonSchema, 1)}
     }`
     return formatTypeDefinition(typeDefinition)
-  } catch (error) {
+  }
+  catch (error) {
     console.error('生成类型定义时出错:', error)
     return '类型生成失败，请检查输入数据格式'
   }
 })
 
 // 修改 generateApiArrayTypes 函数，添加缩进级别参数
-const generateApiArrayTypes = (reqArray: any[] = [], indentLevel: number = 1) => {
+function generateApiArrayTypes(reqArray: any[] = [], indentLevel: number = 1) {
   try {
     let result = ''
     const indent = '  '.repeat(indentLevel)
 
     reqArray.forEach((param: any) => {
-      if (!param?.name) return
+      if (!param?.name) {
+        return
+      }
 
-      const required = param.required === "1"
+      const required = param.required === '1'
       const name = param.name.trim()
       const type = getParameterType(param.type)
-      const desc = param.desc ? `${indent}// ${param.desc.trim()}\n` : ""
+      const desc = param.desc ? `${indent}// ${param.desc.trim()}\n` : ''
 
-      result += `${desc}${indent}${name}${required ? "" : "?"}: ${type};\n`
+      result += `${desc}${indent}${name}${required ? '' : '?'}: ${type}\n`
     })
 
     return result.trim()
-  } catch (error) {
+  }
+  catch (error) {
     console.error('生成请求类型时出错:', error)
     return '/* 类型生成失败 */'
   }
 }
 
 // 修改 generateApiJsonSchemaTypes 函数，添加缩进级别参数
-const generateApiJsonSchemaTypes = (jsonSchema: any, indentLevel: number = 1) => {
+function generateApiJsonSchemaTypes(jsonSchema: any, indentLevel: number = 1) {
   try {
     // 如果 jsonSchema 直接是类型定义
     if (jsonSchema.type && !jsonSchema.properties) {
@@ -88,8 +96,10 @@ const generateApiJsonSchemaTypes = (jsonSchema: any, indentLevel: number = 1) =>
     let result = '{\n'
 
     // 获取属性的类型
-    function getPropertyType (prop: any): string {
-      if (!prop.type) return 'any'
+    function getPropertyType(prop: any): string {
+      if (!prop.type) {
+        return 'any'
+      }
 
       switch (prop.type) {
         case 'string':
@@ -124,32 +134,39 @@ const generateApiJsonSchemaTypes = (jsonSchema: any, indentLevel: number = 1) =>
     // 处理属性
     if (jsonSchema.properties) {
       for (const [key, value] of Object.entries(jsonSchema.properties)) {
-        if (!key || !value) continue // 跳过无效属性
+        if (!key || !value) {
+          continue
+        } // 跳过无效属性
 
         const required = Array.isArray(jsonSchema.required) && jsonSchema.required.includes(key)
         const desc = (value as any).description ? `${indent}  // ${(value as any).description.trim()}\n` : ''
-        result += `${desc}${indent}  ${key}${required ? '' : '?'}: ${getPropertyType(value as any)}\n`
+        result += `${desc}${indent}  ${key}${yApiForm.value.useDocsDefine ? (required ? '' : '?') : ''}: ${getPropertyType(value as any)}\n`
       }
     }
 
     result += '}'
     return result
-  } catch (error) {
+  }
+  catch (error) {
     console.error('生成响应类型时出错:', error)
     return '{ /* 类型生成失败 */ }'
   }
 }
 
-const formatTypeDefinition = (typeStr: string): string => {
+function formatTypeDefinition(typeStr: string): string {
   let indentLevel = 0
   const lines = typeStr.split('\n')
 
   return lines
-    .map(line => {
+    .map((line) => {
       // 处理缩进
-      if (line.includes('}')) indentLevel--
+      if (line.includes('}')) {
+        indentLevel--
+      }
       const formatted = line.trim() ? '  '.repeat(indentLevel) + line.trim() : ''
-      if (line.includes('{')) indentLevel++
+      if (line.includes('{')) {
+        indentLevel++
+      }
       return formatted
     })
     .filter(Boolean) // 移除空行
@@ -157,7 +174,7 @@ const formatTypeDefinition = (typeStr: string): string => {
 }
 
 // 新增参数类型判断函数
-const getParameterType = (type: string = ''): string => {
+function getParameterType(type: string = ''): string {
   switch (type.toLowerCase()) {
     case 'string':
       return 'string'
@@ -171,12 +188,15 @@ const getParameterType = (type: string = ''): string => {
   }
 }
 
-const handleInput = (e: any) => {
+function handleInput(e: any) {
   try {
     const text = e.target.innerText.trim()
-    if (!text) return
+    if (!text) {
+      return
+    }
     jsonSchemaStr.value = JSON.parse(text)
-  } catch (error) {
+  }
+  catch (error) {
     console.error('JSON 解析失败:', error)
     // 可以添加用户提示
   }
@@ -186,12 +206,26 @@ const handleInput = (e: any) => {
 <template>
   <div class="type-definition-container">
     YAPI 接口返回数据（接口返回值粘贴到下方）：
-    <pre contenteditable @input="handleInput" class="pre json-input" :rows="10"
-         placeholder="请输入 JSON 字符串">{{ JSON.stringify(jsonSchemaStr, null, 2) }}</pre>
+    <pre
+      contenteditable
+      class="pre json-input"
+      :rows="10"
+      placeholder="请输入 JSON 字符串"
+      @input="handleInput"
+    >{{ JSON.stringify(jsonSchemaStr, null, 2) }}</pre>
 
     转换后TS类型：
-
-    <pre class="type-definition pre" contenteditable>{{ jsonSchemaObj }}</pre>
+    <el-form :model="yApiForm">
+      <el-form-item label="返回值是否按照规则处理">
+        <el-switch
+          v-model="yApiForm.useDocsDefine"
+        />
+      </el-form-item>
+    </el-form>
+    <pre
+      class="type-definition pre"
+      contenteditable
+    >{{ jsonSchemaObj }}</pre>
   </div>
 </template>
 

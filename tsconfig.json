@@ -9,7 +9,8 @@
     "allowJs": true,
     "strict": true,
     "jsx": "preserve",
-    "baseUrl": "./",
+    "baseUrl": "/",
+    "rootDir": "/",
     "types": ["vite/client"],
     "paths": {
       "@theme/*": [".vitepress/theme/*"]
@@ -20,5 +21,6 @@
     "src/**/*",
     ".vitepress/**/*",
     "components/**/*"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }

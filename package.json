@@ -11,28 +11,28 @@
     "svgo": "svgo -f public/icons"
   },
   "dependencies": {
-    "@vue/repl": "^4.4.3",
-    "element-plus": "2.8.0",
-    "fast-glob": "^3.2.12",
-    "iconify-icon": "^1.0.7",
-    "typed.js": "^2.0.16",
-    "vitepress-demo-plugin": "^1.2.3",
+    "@vue/repl": "^4.5.1",
+    "element-plus": "2.9.7",
+    "fast-glob": "^3.3.3",
+    "iconify-icon": "^2.3.0",
+    "typed.js": "^2.1.0",
+    "vitepress-demo-plugin": "^1.4.0",
     "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.63",
-    "@waline/client": "^3.4.2",
+    "@iconify/json": "^2.2.328",
+    "@waline/client": "^3.5.6",
     "markdown-it-mathjax3": "^4.3.2",
-    "postcss": "8.4.41",
-    "sass": "^1.62.1",
-    "svgo": "^3.0.2",
-    "terser": "^5.17.3",
-    "unocss": "^0.65.3",
-    "unplugin-auto-import": "0.18.2",
-    "unplugin-vue-components": "0.27.4",
-    "vite": "^6.0.7",
+    "postcss": "8.5.3",
+    "sass": "^1.86.3",
+    "svgo": "^3.3.2",
+    "terser": "^5.39.0",
+    "unocss": "66.1.0-beta.11",
+    "unplugin-auto-import": "19.1.2",
+    "unplugin-vue-components": "28.5.0",
+    "vite": "^6.2.6",
     "vite-plugin-svg-icons": "^2.0.1",
-    "vitepress": "^1.5.0"
+    "vitepress": "^1.6.3"
   },
   "pnpm": {
     "peerDependencyRules": {
@@ -40,8 +40,5 @@
         "@algolia/client-search"
       ]
     }
-  },
-  "volta": {
-    "node": "20.11.0"
   }
 }
