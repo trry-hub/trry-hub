@@ -16,14 +16,14 @@
     "fast-glob": "^3.3.3",
     "iconify-icon": "^2.3.0",
     "typed.js": "^2.1.0",
-    "vitepress-demo-plugin": "^1.4.0",
-    "vue": "^3.5.13"
+    "vitepress-demo-plugin": "^1.4.7",
+    "vue": "^3.5.18"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.328",
     "@waline/client": "^3.5.6",
     "markdown-it-mathjax3": "^4.3.2",
-    "postcss": "8.5.3",
+    "postcss": "8.5.6",
     "sass": "^1.86.3",
     "svgo": "^3.3.2",
     "terser": "^5.39.0",
