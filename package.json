@@ -1,7 +1,8 @@
 {
   "type": "module",
+  "packageManager": "pnpm@9.1.2",
   "engines": {
-    "node": "^20.11.0"
+    "node": ">=20.11.0"
   },
   "scripts": {
     "dev": "vitepress",
@@ -40,5 +41,8 @@
         "@algolia/client-search"
       ]
     }
+  },
+  "volta": {
+    "node": "22.19.0"
   }
 }
