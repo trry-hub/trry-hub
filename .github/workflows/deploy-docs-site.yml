@@ -21,14 +21,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           # 选择要使用的 node 版本
-          node-version: 20.11.0
+          node-version: 22.19.0
           registry-url: https://registry.npmmirror.com/
 
       - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 9.1.2
+          version: 10.15.1
           run_install: false
 
       - name: Get pnpm store directory
