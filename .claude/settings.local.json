@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node:*)",
+      "Bash(nvm current:*)",
+      "Bash(volta:*)",
+      "Bash(curl:*)",
+      "Bash(bash:*)",
+      "Bash(source:*)",
+      "Bash(export:*)",
+      "Bash(export PATH=\"$VOLTA_HOME/bin:$PATH\":*)",
+      "Bash(nvm use:*)",
+      "Bash(nvm install:*)",
+      "Bash(echo:*)",
+      "Bash(avn:*)",
+      "Bash(command:*)",
+      "Bash(npm --version:*)",
+      "Bash(nvm list:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

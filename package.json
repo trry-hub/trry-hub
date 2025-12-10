@@ -42,8 +42,5 @@
         "@algolia/client-search"
       ]
     }
-  },
-  "volta": {
-    "node": "22.19.0"
   }
 }
