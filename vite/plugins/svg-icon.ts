@@ -1,4 +1,4 @@
-import { resolve } from 'path'
+import { resolve } from 'node:path'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 export default function createSvgIcon(isBuild: boolean) {

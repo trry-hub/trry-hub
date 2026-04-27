@@ -1,3 +1,4 @@
+import type { PluginOption } from 'vite'
 import createAutoImport from './auto-import'
 import createComponents from './components'
 // import createSetupExtend from './setup-extend'
@@ -9,8 +10,11 @@ import createSvgIcon from './svg-icon'
 // import createSpritesmith from './spritesmith'
 // import createDemoBlock from './demo-block'
 
-export default function createVitePlugins(viteEnv: any, isBuild = false)  {
-  const vitePlugins = []
+export default function createVitePlugins(
+  _viteEnv: Record<string, string>,
+  isBuild = false
+): PluginOption[] {
+  const vitePlugins: PluginOption[] = []
   vitePlugins.push(createAutoImport())
   vitePlugins.push(createComponents())
   // vitePlugins.push(createSetupExtend())

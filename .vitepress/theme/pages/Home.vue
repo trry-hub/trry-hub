@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
-import { useRouter } from 'vitepress'
+import { useRouter, withBase } from 'vitepress'
 import Typed from 'typed.js'
+
 interface IconRow {
   title: string
   themeColor: string
@@ -9,9 +10,16 @@ interface IconRow {
   link?: string
   path?: string
 }
-const router = useRouter()
-var mainColor = ref()
 
+type BackgroundMode = 'snow' | 'journey'
+
+const router = useRouter()
+const backgroundMode = ref<BackgroundMode>('snow')
+const backgroundToggleText = computed(() => backgroundMode.value === 'snow' ? '取经' : '雪山')
+const backgroundToggleIcon = computed(() => backgroundMode.value === 'snow' ? 'i-tabler:map' : 'i-tabler:mountain')
+const homeBaseBackgroundImage = computed(() => `url("${withBase('/images/base/bg.jpg')}")`)
+const journeyBackgroundImage = computed(() => `url("${withBase('/images/xiyou/bg.jpg')}")`)
+const xiyouAsset = (fileName: string) => withBase(`/images/xiyou/${fileName}`)
 
 const iconList = [
   {
@@ -36,12 +44,6 @@ const iconList = [
     themeColor: '#1e80ff',
     icon: 'i-tabler:brand-juejin',
     link: 'https://juejin.cn/user/2620826707309208',
-  },
-  {
-    title: 'csdn',
-    themeColor: '#fc5531',
-    icon: 'csdn-logo',
-    link: 'https://blog.csdn.net/weixin_40637683?spm=1000.2115.3001.5343',
   },
   {
     title: 'Diary',
@@ -71,6 +73,11 @@ onMounted(() => {
   var style = getComputedStyle(root as Element);
   // 获取 --main-color 的值
   iconList[0].themeColor = style.getPropertyValue('--vp-c-brand');
+
+  const savedBackground = localStorage.getItem('trry-home-background')
+  if (savedBackground === 'snow' || savedBackground === 'journey') {
+    backgroundMode.value = savedBackground
+  }
 })
 const activeRow = ref<IconRow>({
   title: '',
@@ -89,18 +96,26 @@ function onMouseLeave() {
   }
 }
 
+function toggleBackground() {
+  backgroundMode.value = backgroundMode.value === 'snow' ? 'journey' : 'snow'
+  localStorage.setItem('trry-home-background', backgroundMode.value)
+}
+
 let renderIconList = ref<IconRow[]>([])
+const hiddenIconList = computed(() => iconList.slice(renderIconList.value.length))
+const iconEnterStep = 110
 
 onMounted(() => {
-  // 遍历iconList, 隔一段时间添加一个
   iconList.forEach((item: IconRow, index: number) => {
     setTimeout(() => {
-      renderIconList.value.push(item)
-    }, index * 199)
+      requestAnimationFrame(() => {
+        renderIconList.value.push(item)
+      })
+    }, index * iconEnterStep)
   })
 
   setTimeout(() => {
-    var typed = new Typed('.motto .typed', {
+    new Typed('.motto .typed', {
       strings: [
         '不要重复造轮子，要善于利用现有的资源和框架，提高开发效率和质量。',
         '前端不仅仅是页面，而是用户体验的艺术。',
@@ -118,7 +133,7 @@ onMounted(() => {
       backDelay: 5000,
       fadeOutDelay: 1000,
     });
-  }, 199 * iconList.length + 1000);
+  }, iconEnterStep * iconList.length + 620);
 })
 
 function toTargetItem(row: IconRow) {
@@ -131,7 +146,11 @@ function toTargetItem(row: IconRow) {
 
 </script>
 <template>
-  <div class="home-preview">
+  <div :class="`home-preview home-preview--${backgroundMode}`">
+    <button class="background-toggle" type="button" @click="toggleBackground">
+      <SvgIcon :name="backgroundToggleIcon" />
+      <span>{{ backgroundToggleText }}</span>
+    </button>
     <div class="main">
       <div class="main-info">
         <p class="title">trry-blog</p>
@@ -140,12 +159,27 @@ function toTargetItem(row: IconRow) {
         </p>
       </div>
       <div class="icon-list">
-        <transition-group name="list">
+        <transition-group name="list" tag="div" class="icon-track">
           <div v-for="(item, index) in renderIconList" @click="toTargetItem(item)" :key="item.title" :class="`item ${item.title === activeRow.title ? 'hover-active' : ''}`" @mouseenter="onMouseEnter(item)" @mouseleave="onMouseLeave">
             <SvgIcon :name="item.icon" :key="index"></SvgIcon>
             <p class="tooltip" :key="index">{{ item.title }}</p>
           </div>
+          <span v-for="item in hiddenIconList" :key="`placeholder-${item.title}`" class="icon-placeholder" aria-hidden="true"></span>
         </transition-group>
+        <div class="journey-scene" aria-hidden="true">
+          <div class="walker walker--wukong">
+            <img :src="xiyouAsset('wk.png')" alt="">
+          </div>
+          <div class="walker walker--bajie">
+            <img :src="xiyouAsset('bj.png')" alt="">
+          </div>
+          <div class="walker walker--tang">
+            <img :src="xiyouAsset('ts.png')" alt="">
+          </div>
+          <div class="walker walker--shaseng">
+            <img :src="xiyouAsset('ss.png')" alt="">
+          </div>
+        </div>
       </div>
     </div>
     <div class="footer">
@@ -156,28 +190,34 @@ function toTargetItem(row: IconRow) {
 
 <style scoped lang="scss">
 $num: 10;
-
-.list-item {
-  display: inline-block;
-  margin-right: 10px;
-}
+$journey-bg-width-from-height: 244.27480916vh;
 
 .list-enter-active,
+.list-leave-active,
+.list-move {
+  transition:
+    opacity 460ms ease,
+    transform 620ms cubic-bezier(0.2, 0.86, 0.2, 1);
+  will-change: opacity, transform;
+}
+
 .list-leave-active {
-  transition: all 3s;
+  position: absolute;
+  pointer-events: none;
 }
 
 .list-enter-from,
 .list-leave-to {
   opacity: 0;
-  transform: scale(0.2);
+  transform: translate3d(0, 12px, 0) scale(0.94);
 }
 
 .home-preview {
+  --journey-bg-width: max(100vw, #{$journey-bg-width-from-height});
   min-height: 100vh;
   height: 100%;
   background-color: #348cb3;
-  background-image: url('/images/base/bg.jpg');
+  background-image: v-bind('homeBaseBackgroundImage');
   background-repeat: repeat-x;
   background-position: bottom left;
   background-size: 1500px auto;
@@ -186,6 +226,140 @@ $num: 10;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  transition: background-color 420ms ease;
+}
+
+.home-preview::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background-image:
+    linear-gradient(180deg, rgba(37, 95, 97, 0.12) 0%, rgba(192, 139, 78, 0.1) 58%, rgba(67, 35, 16, 0.16) 100%),
+    v-bind('journeyBackgroundImage');
+  background-position: center bottom, center bottom;
+  background-size: cover, var(--journey-bg-width) auto;
+  background-repeat: no-repeat, repeat-x;
+  transition: opacity 520ms ease;
+  will-change: background-position;
+  z-index: 0;
+}
+
+.home-preview--journey {
+  background-color: #c58b4f;
+  background-image: none;
+  animation: none;
+}
+
+.home-preview--journey::before {
+  opacity: 1;
+  animation: journey-bg-move 32s linear infinite;
+}
+
+.background-toggle {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 38px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 28px rgba(20, 58, 72, 0.18);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition:
+    transform 240ms ease,
+    background-color 240ms ease,
+    box-shadow 240ms ease;
+
+  &:hover {
+    transform: translate3d(0, -2px, 0);
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 16px 34px rgba(20, 58, 72, 0.24);
+  }
+
+  .svg-icon {
+    font-size: 18px;
+  }
+}
+
+.journey-scene {
+  position: absolute;
+  top: calc(100% + 104px);
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translate3d(-50%, 14px, 0);
+  pointer-events: none;
+  transition:
+    opacity 520ms ease,
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-preview--journey .journey-scene {
+  opacity: 1;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.walker {
+  width: 160px;
+  height: 146px;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+
+  img {
+    display: block;
+    width: 1280px;
+    max-width: none;
+    height: auto;
+    animation: journey-walk 1.15s steps(8) infinite;
+  }
+}
+
+.walker--tang {
+  width: 116px;
+  height: 164px;
+  transform: translate3d(0, 10px, 0);
+
+  img {
+    width: 928px;
+  }
+}
+
+.walker--wukong {
+  width: 160px;
+  height: 146px;
+}
+
+.walker--bajie {
+  width: 160px;
+  height: 146px;
+
+  img {
+    width: 1280px;
+  }
+}
+
+.walker--shaseng {
+  width: 160px;
+  height: 146px;
+
+  img {
+    width: 1280px;
+  }
 }
 
 .main {
@@ -196,30 +370,59 @@ $num: 10;
   flex-direction: column;
   width: 90%;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 
   .main-info {
+    text-align: center;
+
     .title {
-      text-align: center;
       font-size: 50px;
       color: #fff;
       padding: 50px 0;
+      margin: 0;
     }
 
     .motto {
+      height: 32px;
       font-size: 20px;
+      line-height: 32px;
       color: #fff;
-      // text-align: center;
-      padding-bottom: 60px;
+      padding-bottom: 136px;
+      margin: 0;
+      overflow: hidden;
+      white-space: nowrap;
+
+      :deep(.typed),
+      :deep(.typed-cursor) {
+        display: inline-block;
+        line-height: 32px;
+        vertical-align: top;
+      }
     }
   }
 
   .icon-list {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 65px);
+    display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 20px 40px;
+    position: relative;
+
+    .icon-track {
+      display: grid;
+      grid-template-columns: repeat(8, 65px);
+      justify-content: center;
+      align-items: center;
+      gap: 20px 40px;
+      position: relative;
+    }
+
+    .icon-placeholder {
+      width: 65px;
+      height: 65px;
+      opacity: 0;
+      pointer-events: none;
+    }
 
     .item {
       width: 65px;
@@ -227,7 +430,10 @@ $num: 10;
       border-radius: 50%;
       box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
       background-color: #fff;
-      transition: all 0.2s ease-in;
+      transition:
+        transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 300ms ease,
+        box-shadow 300ms ease;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -235,26 +441,36 @@ $num: 10;
       z-index: 10;
       cursor: pointer;
       transform-origin: center center;
+      backface-visibility: hidden;
+      will-change: transform;
 
       &:active {
-        transform: scale(0.9);
+        transform: translate3d(0, -4px, 0) scale(1.04);
       }
 
       .svg-icon {
         font-size: 30px;
         color: #333;
-        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transition:
+          color 260ms ease,
+          fill 260ms ease,
+          transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .tooltip {
-        transform: scale(0);
+        left: 50%;
+        top: -48px;
+        transform: translate3d(-50%, 8px, 0) scale(0.94);
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         -khtml-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transition:
+          opacity 240ms ease,
+          transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+          background-color 240ms ease;
         white-space: nowrap;
         text-align: center;
         font-size: 16px;
@@ -264,8 +480,8 @@ $num: 10;
         border-radius: 25px;
         box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
         position: absolute;
-        top: 0;
         opacity: 0;
+        pointer-events: none;
 
         &:after {
           content: '';
@@ -277,13 +493,14 @@ $num: 10;
           left: 50%;
           transform: translateX(-50%) rotateZ(45deg);
           background-color: v-bind('activeRow.themeColor');
-          transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          transition: background-color 240ms ease;
         }
       }
 
       &.hover-active {
-        transform: scale(1.3);
+        transform: translate3d(0, -6px, 0) scale(1.08);
         background-color: v-bind('activeRow.themeColor');
+        box-shadow: 0 18px 24px rgba(0, 0, 0, 0.18);
 
         .svg-icon {
           fill: #fff;
@@ -292,10 +509,9 @@ $num: 10;
 
         .tooltip {
           opacity: 1;
-          top: -60px;
           background-color: #fff;
           text-shadow: 2px -2px 1px rgba(0, 0, 0, 0.4);
-          transform: scale(1);
+          transform: translate3d(-50%, -4px, 0) scale(1);
           background-color: v-bind('activeRow.themeColor');
         }
       }
@@ -315,6 +531,8 @@ $num: 10;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 2;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -330,6 +548,41 @@ $num: 10;
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .home-preview,
+  .home-preview--journey::before,
+  .walker img,
+  .main .icon-list .item,
+  .footer {
+    animation: none;
+  }
+
+  .main .icon-list .item,
+  .footer {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 960px) {
+  .main .icon-list .icon-track {
+    grid-template-columns: repeat(3, 65px);
+  }
+
+  .main .main-info .motto {
+    padding-bottom: 72px;
+  }
+
+  .journey-scene {
+    top: calc(100% + 64px);
+    transform: translate3d(-50%, 10px, 0) scale(0.56);
+    transform-origin: center top;
+  }
+
+  .home-preview--journey .journey-scene {
+    transform: translate3d(-50%, 0, 0) scale(0.56);
+  }
+}
+
 @keyframes move {
   0% {
     background-position-x: 0;
@@ -337,6 +590,26 @@ $num: 10;
 
   100% {
     background-position-x: -1500px;
+  }
+}
+
+@keyframes journey-bg-move {
+  0% {
+    background-position: center bottom, 0 bottom;
+  }
+
+  100% {
+    background-position: center bottom, calc(0px - var(--journey-bg-width)) bottom;
+  }
+}
+
+@keyframes journey-walk {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
   }
 }
 

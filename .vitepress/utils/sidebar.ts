@@ -1,6 +1,6 @@
-import { join } from 'path';
-import { readdirSync, statSync } from 'fs';
-import { type DefaultTheme } from 'vitepress';
+import { readdirSync, statSync } from 'node:fs'
+import { join } from 'node:path'
+import { type DefaultTheme } from 'vitepress'
 
 export interface SidebarPluginOptionType {
   ignoreList?: string[]
@@ -15,29 +15,37 @@ export interface SidebarPluginOptionType {
   beforeCreateSideBarItems?: (data: string[]) => string[]
 }
 
-const DEFAULT_IGNORE_FOLDER = ['scripts', 'components', 'assets', '.vitepress'];
+const DEFAULT_IGNORE_FOLDER = ['scripts', 'components', 'assets', '.vitepress']
 
 export default function generateSideBar(option: SidebarPluginOptionType) {
-
-  option.path = option.path ?? 'docs';
-  option.prefix = option.prefix ?? option.path ?? 'docs';
-  const docsPath = join(process.cwd(), option.path);
+  const docsPathOption = option.path ?? 'docs'
+  const prefix = option.prefix ?? docsPathOption
+  const docsPath = join(process.cwd(), docsPathOption)
 
   function removePrefix(str: string, identifier: string | RegExp): string {
-    return str.replace(identifier, '');
+    return str.replace(identifier, '')
   }
 
   function createSideBarItems(
     targetPath: string,
     ...reset: string[]
   ): DefaultTheme.SidebarItem[] {
-    const { ignoreIndexItem, deletePrefix, collapsed = false, sideBarItemsResolved, beforeCreateSideBarItems } = option;
-    const rawNode = readdirSync(join(targetPath, ...reset));
-    const node = beforeCreateSideBarItems?.(rawNode) ?? rawNode;
+    const {
+      ignoreIndexItem,
+      deletePrefix,
+      collapsed = false,
+      sideBarItemsResolved,
+      beforeCreateSideBarItems,
+    } = option
+    const rawNode = readdirSync(join(targetPath, ...reset))
+    const node = beforeCreateSideBarItems?.(rawNode) ?? rawNode
+
     if (ignoreIndexItem && node.length === 1 && node[0] === 'index.md') {
-      return [];
+      return []
     }
-    const result: DefaultTheme.SidebarItem[] = [];
+
+    const result: DefaultTheme.SidebarItem[] = []
+
     for (const fname of node) {
       if (statSync(join(targetPath, ...reset, fname)).isDirectory()) {
         // is directory
@@ -48,40 +56,40 @@ export default function generateSideBar(option: SidebarPluginOptionType) {
           fname
         );
         // replace directory name, if yes
-        let text = fname;
+        let text = fname
 
         if (deletePrefix) {
-          text = removePrefix(text, deletePrefix);
+          text = removePrefix(text, deletePrefix)
         }
 
         if (items.length > 0) {
           const sidebarItem: DefaultTheme.SidebarItem = {
             text,
             items
-          };
+          }
           // vitePress sidebar option collapsed
-          sidebarItem.collapsed = collapsed;
-          result.push(sidebarItem);
+          sidebarItem.collapsed = collapsed
+          result.push(sidebarItem)
         }
       } else {
         // is filed
-        if (ignoreIndexItem && fname === 'index.md' || /^-.*\.(md|MD)$/.test(fname)) {
-          continue;
+        if ((ignoreIndexItem && fname === 'index.md') || /^-.*\.(md|MD)$/.test(fname)) {
+          continue
         }
-        const fileName = fname.replace(/\.md$/, '');
-        let text = fileName;
+        const fileName = fname.replace(/\.md$/i, '')
+        let text = fileName
         if (deletePrefix) {
-          text = removePrefix(text, deletePrefix);
+          text = removePrefix(text, deletePrefix)
         }
 
         const item: DefaultTheme.SidebarItem = {
           text,
-          link: '/' + option.prefix + '/' + [...reset, `${fileName}.html`].join('/')
-        };
-        result.push(item);
+          link: `/${prefix}/${[...reset, `${fileName}.html`].join('/')}`,
+        }
+        result.push(item)
       }
     }
-    return sideBarItemsResolved?.(result) ?? result;
+    return sideBarItemsResolved?.(result) ?? result
   }
 
   function createSideBarGroups(
@@ -90,40 +98,46 @@ export default function generateSideBar(option: SidebarPluginOptionType) {
   ): DefaultTheme.SidebarItem[] {
     return [
       {
-        items: createSideBarItems(targetPath, folder)
-      }
-    ];
+        items: createSideBarItems(targetPath, folder),
+      },
+    ]
   }
 
   function createSidebarMulti(
     path: string,
     prefix: string
   ): DefaultTheme.SidebarMulti {
-    const { ignoreList = [], ignoreIndexItem = false, sideBarResolved } = option;
-    const il = [...DEFAULT_IGNORE_FOLDER, ...ignoreList];
-    const data: DefaultTheme.SidebarMulti = {};
+    const { ignoreList = [], ignoreIndexItem = false, sideBarResolved } = option
+    const ignoreFolders = [...DEFAULT_IGNORE_FOLDER, ...ignoreList]
+    const data: DefaultTheme.SidebarMulti = {}
     const node = readdirSync(path).filter(
-      (n) => statSync(join(path, n)).isDirectory() && !il.includes(n)
-    );
+      (n) => statSync(join(path, n)).isDirectory() && !ignoreFolders.includes(n)
+    )
 
     for (const k of node) {
-      data[`/${prefix}/${k}/`] = createSideBarGroups(path, k);
+      data[`/${prefix}/${k}/`] = createSideBarGroups(path, k)
     }
 
     if (ignoreIndexItem) {
       for (const i in data) {
-        let obj = data[i];
-        obj = obj.filter((i) => (i.items != null) && i.items.length > 0);
-        if (obj.length === 0) {
-          Reflect.deleteProperty(data, i);
+        const groups = data[i]
+        if (!Array.isArray(groups)) {
+          continue
+        }
+
+        const visibleGroups = groups.filter((item) => item.items != null && item.items.length > 0)
+        if (visibleGroups.length === 0) {
+          Reflect.deleteProperty(data, i)
+        } else {
+          data[i] = visibleGroups
         }
       }
     }
 
-    return sideBarResolved?.(data) ?? data;
+    return sideBarResolved?.(data) ?? data
   }
 
 
-  let sidebar = createSidebarMulti(docsPath, option.prefix);
+  const sidebar = createSidebarMulti(docsPath, prefix)
   return sidebar
 }

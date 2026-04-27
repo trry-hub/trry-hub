@@ -1,52 +1,69 @@
-import fs from 'fs'
-import path from 'path'
+import { readdirSync, statSync } from 'node:fs'
+import { join, resolve } from 'node:path'
+import type { DefaultTheme } from 'vitepress'
+import { docsRoot } from '../config/site'
 
-let navBar:any[] = []
+type NavItem = DefaultTheme.NavItem
 
 /**
- * 根据 /zh 目录下的文件夹生成导航栏
+ * 根据内容目录下的文件夹生成导航栏
  * link 只匹配文件夹下第一个md文件，如果没有md文件，则递归到有md文件为止
  */
-function generateNavBarItemSync(dir: string, docsDir: string, navBar: any[]) {
-  const res = fs.readdirSync(path.join(docsDir, dir))
-  for (const item of res) {
-    const fullPath = path.join(dir, item).replace('.md', '')
+function generateNavBarItems(dir: string, docsDir: string): NavItem[] {
+  const navItems: NavItem[] = []
+  const res = readdirSync(join(docsDir, dir))
 
-    if (isFileSync(path.join(docsDir, dir, item))) {
-      navBar.push({
-        text: item.replace('.md', ''),
+  for (const item of res) {
+    const itemPath = join(docsDir, dir, item)
+    const fullPath = join(dir, item).replace(/\.md$/i, '')
+
+    if (isFile(itemPath)) {
+      navItems.push({
+        text: item.replace(/\.md$/i, ''),
         activeMatch: `^/${fullPath}/`,
         link: fullPath,
       })
+      continue
     }
-    if (!isFileSync(path.join(docsDir, dir, item))) {
-      const obj = {
+
+    const link = findFirstMarkdownPath(fullPath, docsDir)
+    if (link) {
+      navItems.push({
         text: item,
         activeMatch: `^/${fullPath}/`,
-        link: formatPath(fullPath),
-        // items: [],
-      }
-      navBar.push(obj)
+        link,
+      })
       // generateNavBarItemSync(path.join(dir, item), docsDir, obj.items)
     }
   }
+
+  return navItems
 }
+
 // 递归到第一个md文件组成路径
-function formatPath(dir: string): string| undefined {
-  const res = fs.readdirSync(path.join(docsDir, dir))
+function findFirstMarkdownPath(dir: string, docsDir: string): string | undefined {
+  const res = readdirSync(join(docsDir, dir))
+
   for (const item of res) {
-    if (isFileSync(path.join(docsDir, dir, item))) {
-      return path.join(dir, item).replace('.md', '')
+    const itemPath = join(docsDir, dir, item)
+    const fullPath = join(dir, item)
+
+    if (isFile(itemPath) && /\.md$/i.test(item)) {
+      return fullPath.replace(/\.md$/i, '')
     }
-    if (!isFileSync(path.join(docsDir, dir, item))) {
-      return formatPath(path.join(dir, item))
+
+    if (!isFile(itemPath)) {
+      const childPath = findFirstMarkdownPath(fullPath, docsDir)
+      if (childPath) {
+        return childPath
+      }
     }
   }
 }
 
-function isFileSync(filePath: string) {
+function isFile(filePath: string) {
   try {
-    const stats = fs.statSync(filePath)
+    const stats = statSync(filePath)
     return stats.isFile()
   } catch (err) {
     console.error(err)
@@ -55,8 +72,8 @@ function isFileSync(filePath: string) {
 }
 
 // 获取当前项目根路径
-const docsDir = path.resolve(__dirname, '../../')
-generateNavBarItemSync('src', docsDir, navBar)
+const docsDir = resolve(process.cwd())
+const navBar = generateNavBarItems(docsRoot, docsDir)
 
 export default navBar
 
