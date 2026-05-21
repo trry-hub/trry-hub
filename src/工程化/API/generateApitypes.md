@@ -15,5 +15,4 @@
 - 确保返回的示例数据完整且格式正确
 - 如果接口返回数据结构较复杂，建议先检查数据示例是否包含所有可能的字段
 
-<demo vue="../../components/utils/generateApitypes.vue" title="基础用法" description="根据 YAPI 生成 API ts 类型"></demo>
-
+<demo vue="../../../components/utils/generateApitypes.vue" title="基础用法" description="根据 YAPI 生成 API ts 类型"></demo>

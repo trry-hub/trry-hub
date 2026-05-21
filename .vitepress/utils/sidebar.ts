@@ -17,6 +17,50 @@ export interface SidebarPluginOptionType {
 
 const DEFAULT_IGNORE_FOLDER = ['scripts', 'components', 'assets', '.vitepress']
 
+const TOP_LEVEL_ORDER = [
+  'AI提效',
+  '前端基础',
+  '前端框架',
+  '工程化',
+  '开发工具',
+  '后端数据',
+  '算法面试',
+  '系统软件',
+  '知识资料',
+]
+
+const collator = new Intl.Collator('zh-CN', {
+  numeric: true,
+  sensitivity: 'base',
+})
+
+function sortItems(items: string[]) {
+  return [...items].sort((a, b) => {
+    const aIndex = TOP_LEVEL_ORDER.indexOf(a)
+    const bIndex = TOP_LEVEL_ORDER.indexOf(b)
+
+    if (aIndex !== -1 || bIndex !== -1) {
+      return (aIndex === -1 ? TOP_LEVEL_ORDER.length : aIndex)
+        - (bIndex === -1 ? TOP_LEVEL_ORDER.length : bIndex)
+    }
+
+    return collator.compare(a, b)
+  })
+}
+
+function sortDirectoryEntries(targetPath: string, items: string[]) {
+  return sortItems(items).sort((a, b) => {
+    const aIsDirectory = statSync(join(targetPath, a)).isDirectory()
+    const bIsDirectory = statSync(join(targetPath, b)).isDirectory()
+
+    if (aIsDirectory !== bIsDirectory) {
+      return aIsDirectory ? 1 : -1
+    }
+
+    return 0
+  })
+}
+
 export default function generateSideBar(option: SidebarPluginOptionType) {
   const docsPathOption = option.path ?? 'docs'
   const prefix = option.prefix ?? docsPathOption
@@ -37,7 +81,8 @@ export default function generateSideBar(option: SidebarPluginOptionType) {
       sideBarItemsResolved,
       beforeCreateSideBarItems,
     } = option
-    const rawNode = readdirSync(join(targetPath, ...reset))
+    const currentPath = join(targetPath, ...reset)
+    const rawNode = sortDirectoryEntries(currentPath, readdirSync(currentPath))
     const node = beforeCreateSideBarItems?.(rawNode) ?? rawNode
 
     if (ignoreIndexItem && node.length === 1 && node[0] === 'index.md') {
@@ -110,7 +155,7 @@ export default function generateSideBar(option: SidebarPluginOptionType) {
     const { ignoreList = [], ignoreIndexItem = false, sideBarResolved } = option
     const ignoreFolders = [...DEFAULT_IGNORE_FOLDER, ...ignoreList]
     const data: DefaultTheme.SidebarMulti = {}
-    const node = readdirSync(path).filter(
+    const node = sortItems(readdirSync(path)).filter(
       (n) => statSync(join(path, n)).isDirectory() && !ignoreFolders.includes(n)
     )
 

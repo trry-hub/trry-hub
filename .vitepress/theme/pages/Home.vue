@@ -26,7 +26,7 @@ const iconList = [
     title: 'Blog',
     themeColor: '#428bca',
     icon: 'home',
-    path: 'trry-hub/src/leetcode/2021-10/29',
+    path: 'trry-hub/src/算法面试/LeetCode/2021-10/29',
   },
   {
     title: 'GitHub',
