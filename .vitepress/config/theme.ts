@@ -11,7 +11,7 @@ export function createThemeConfig(): DefaultTheme.Config {
   return {
     nav: navbar,
     sidebar,
-    logo: '/trry.png',
+    logo: '/logo.svg',
     outline: 'deep',
     outlineTitle: '目录',
     lastUpdatedText: '上次更新',
