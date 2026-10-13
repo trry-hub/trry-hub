@@ -9,7 +9,7 @@ const sidebar = generateSideBar({
 
 export function createThemeConfig(): DefaultTheme.Config {
   return {
-    nav: navbar,
+    nav: [...navbar, { text: 'Release', link: '/releases/', activeMatch: '^/releases/' }],
     sidebar,
     logo: '/logo.svg',
     outline: 'deep',
