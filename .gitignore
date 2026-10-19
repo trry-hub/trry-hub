@@ -89,6 +89,3 @@ tmp/
 temp/
 TODOs.md
 draft.md
-
-# Release APKs are local/deployment assets, not Git source files
-/public/releases/**/*.apk
